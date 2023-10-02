@@ -1,11 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using TheNecromancers.StateMachine.Player;
 using UnityEngine;
+using TheNecromancers.StateMachine.Player;
 
 public class PlayerMovementState : PlayerBaseState
 {
     public PlayerMovementState(PlayerStateMachine stateMachine) : base(stateMachine) { }
+
+    public override void Enter() { }
+
+    public override void Update(float deltaTime) { }
+
+    public override void Exit() { }
 
     protected void Move(float deltaTime)
     {
@@ -14,7 +18,7 @@ public class PlayerMovementState : PlayerBaseState
 
     protected void Move(Vector3 movement, float deltaTime)
     {
-        stateMachine.Controller.Move(movement * deltaTime);
+        stateMachine.Controller.Move((movement + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
 
     protected Vector3 CalculateMovement()
@@ -38,10 +42,4 @@ public class PlayerMovementState : PlayerBaseState
             Quaternion.LookRotation(movement),
             deltaTime * stateMachine.RotationSpeed);
     }
-
-    public override void Enter() { }
-
-    public override void Update(float deltaTime) { }
-
-    public override void Exit() { }
 }

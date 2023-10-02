@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,9 @@ namespace TheNecromancers.Managers
     public class InputManager : MonoBehaviour, Controls.IPlayerActions
     {
         public Vector2 MovementValue { get; private set; }
+        public bool IsAttacking { get; private set; }
+
+        public event Action RollEvent;
 
         private Controls controls;
 
@@ -35,6 +40,32 @@ namespace TheNecromancers.Managers
         public void EnablePlayerControls()
         {
             controls.Player.Enable();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                StartCoroutine(HandleAttackClick());
+            }
+            else if (context.canceled)
+            {
+                IsAttacking = false;
+            }
+        }
+
+        IEnumerator HandleAttackClick()
+        {
+            IsAttacking = true;
+            yield return new WaitForSeconds(0.1f);
+            IsAttacking = false;
+        }
+
+        public void OnRoll(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+
+            RollEvent?.Invoke();
         }
     }
 }

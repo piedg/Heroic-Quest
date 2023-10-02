@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheNecromancers.StateMachine.Player
@@ -18,11 +19,19 @@ namespace TheNecromancers.StateMachine.Player
         {
             stateMachine.Animator.SetFloat(SpeedParamHash, 0f);
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, CrossFadeDuration);
+
+            stateMachine.InputManager.RollEvent += OnRoll;
         }
 
         public override void Update(float deltaTime)
         {
             movement = CalculateMovement();
+
+            if (stateMachine.InputManager.IsAttacking)
+            {
+                stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
+                return;
+            }
 
             Move(movement * stateMachine.MovementSpeed, deltaTime);
 
@@ -38,7 +47,13 @@ namespace TheNecromancers.StateMachine.Player
 
         public override void Exit()
         {
+            stateMachine.InputManager.RollEvent -= OnRoll;
+        }
 
+        void OnRoll()
+        {
+            stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
+            return;
         }
     }
 }

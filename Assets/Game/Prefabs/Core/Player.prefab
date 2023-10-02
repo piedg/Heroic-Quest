@@ -1155,11 +1155,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7742121899579575838}
-  - component: {fileID: 8892630160191365007}
   - component: {fileID: 2189282888379518620}
-  - component: {fileID: 3902236215575821189}
-  - component: {fileID: 5969115250317159769}
-  - component: {fileID: 1493319324377222760}
+  - component: {fileID: 1651181489480645812}
+  - component: {fileID: 19611742917140573}
+  - component: {fileID: 9028476321078857824}
+  - component: {fileID: 2441213401718694030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1180,36 +1180,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8329843326839690250}
   - {fileID: 6294650170431001418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &8892630160191365007
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3151982542086845250}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &2189282888379518620
 Animator:
   serializedVersion: 5
@@ -1231,7 +1204,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3902236215575821189
+--- !u!143 &1651181489480645812
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151982542086845250}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &19611742917140573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1243,29 +1242,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b249410f109bf43b3a3e12350b6e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &5969115250317159769
-NavMeshAgent:
+--- !u!114 &9028476321078857824
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3151982542086845250}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 0
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1493319324377222760
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7aefdfa1c17a71489733e20cdebf480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  Agent: {fileID: 0}
+  drag: 0.3
+--- !u!114 &2441213401718694030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,11 +1272,16 @@ MonoBehaviour:
   <InputManager>k__BackingField: {fileID: 0}
   <Controller>k__BackingField: {fileID: 0}
   <Animator>k__BackingField: {fileID: 0}
+  <ForceReceiver>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 4.197
   <TargetingMovementSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 10
-  <RollForce>k__BackingField: 0
-  <RollDuration>k__BackingField: 0
+  <RollForce>k__BackingField: 3.781
+  <RollDuration>k__BackingField: 1.05
+  <WeaponLogic>k__BackingField: {fileID: 0}
+  <RightHandHolder>k__BackingField: {fileID: 3066094760843531868}
+  <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
+    type: 2}
 --- !u!1 &3392956121609593443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1751,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7742121899579575838}
+  m_Father: {fileID: 6294650170431001418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3007321222663675565
 SkinnedMeshRenderer:
@@ -2284,6 +2281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8329843326839690250}
   - {fileID: 6727923083633186560}
   - {fileID: 8744428717607392456}
   - {fileID: 3869794247182455810}
