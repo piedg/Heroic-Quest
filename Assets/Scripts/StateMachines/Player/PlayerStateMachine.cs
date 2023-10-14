@@ -2,6 +2,8 @@ using UnityEngine;
 using TheNecromancers.Managers;
 using TheNecromancers.Combat;
 using TheNecromancers.CustomPhysics;
+using TheNecromancers.Data;
+using System.Collections.Generic;
 
 namespace TheNecromancers.StateMachine.Player
 {
@@ -34,6 +36,7 @@ namespace TheNecromancers.StateMachine.Player
 
         public Transform MainCameraTransform { get; private set; }
 
+
         private void Awake()
         {
             InputManager = GetComponent<InputManager>();
@@ -55,7 +58,7 @@ namespace TheNecromancers.StateMachine.Player
         {
             if (CurrentWeapon)
             {
-                CurrentWeapon.Equip(RightHandHolder);
+                CurrentWeapon.Equip(RightHandHolder, Animator);
             }
 
             if (RightHandHolder)

@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20934b298721114198ac77e6788a590, type: 3}
   m_Name: Simple Sword
   m_EditorClassIdentifier: 
-  <ItemPrefab>k__BackingField: {fileID: 3541478899021020172, guid: 4c3aab6f25c88bb4c9e9207f69db8f15,
+  inventoryPrefab: {fileID: 0}
+  itemPrefab: {fileID: 3541478899021020172, guid: 4c3aab6f25c88bb4c9e9207f69db8f15,
     type: 3}
+  type: 2
+  descriptionTitle: 
+  description: 
   <Damage>k__BackingField: 10
-  <AnimationLayer>k__BackingField: 0
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 984b3646a106d2e418a297c8c2af68fd,
+    type: 2}
   <Knockbacks>k__BackingField:
-  - 0
-  - 0
-  - 0
   - 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
@@ -28,21 +30,4 @@ MonoBehaviour:
     <ComboAttackTime>k__BackingField: 0.7
     <Force>k__BackingField: 1.5
     <ForceTime>k__BackingField: 0.1
-  - <AnimationName>k__BackingField: Attack2
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 2
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 1.5
-    <ForceTime>k__BackingField: 0.1
-  - <AnimationName>k__BackingField: Attack3
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 3
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 1.5
-    <ForceTime>k__BackingField: 0.1
-  - <AnimationName>k__BackingField: Attack4
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: -1
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 1.5
-    <ForceTime>k__BackingField: 0.1
+  <WeaponType>k__BackingField: 1

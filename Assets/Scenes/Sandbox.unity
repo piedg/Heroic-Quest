@@ -5281,6 +5281,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 606115204331521880, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
+      propertyPath: <CurrentWeapon>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
+        type: 2}
     - target: {fileID: 750157048637989355, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
       propertyPath: m_IsActive
