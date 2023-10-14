@@ -5,11 +5,11 @@ namespace TheNecromancers.StateMachine.Player
 {
     public class PlayerLocomotionState : PlayerMovementState
     {
-        private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
-        private readonly int SpeedParamHash = Animator.StringToHash("Speed");
+        private readonly int locomotionBlendTreeHash = Animator.StringToHash("Locomotion");
+        private readonly int speedParamHash = Animator.StringToHash("Speed");
 
-        private const float AnimatorDumpTime = 0.1f;
-        private const float CrossFadeDuration = 0.25f;
+        private const float animatorDampTime = 0.1f;
+        private const float crossFadeDuration = 0.25f;
 
         Vector3 movement;
 
@@ -17,10 +17,11 @@ namespace TheNecromancers.StateMachine.Player
 
         public override void Enter()
         {
-            stateMachine.Animator.SetFloat(SpeedParamHash, 0f);
-            stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, CrossFadeDuration);
+            stateMachine.Animator.SetFloat(speedParamHash, 0f);
+            stateMachine.Animator.CrossFadeInFixedTime(locomotionBlendTreeHash, crossFadeDuration);
 
             stateMachine.InputManager.RollEvent += OnRoll;
+            stateMachine.InputManager.BlockEvent += OnBlock;
         }
 
         public override void Update(float deltaTime)
@@ -37,22 +38,29 @@ namespace TheNecromancers.StateMachine.Player
 
             if (stateMachine.InputManager.MovementValue == Vector2.zero)
             {
-                stateMachine.Animator.SetFloat(SpeedParamHash, 0f, AnimatorDumpTime, deltaTime);
+                stateMachine.Animator.SetFloat(speedParamHash, 0f, animatorDampTime, deltaTime);
                 return;
             }
 
-            stateMachine.Animator.SetFloat(SpeedParamHash, stateMachine.Controller.velocity.magnitude, AnimatorDumpTime, deltaTime);
+            stateMachine.Animator.SetFloat(speedParamHash, stateMachine.Controller.velocity.magnitude, animatorDampTime, deltaTime);
             FaceMovementDirection(movement, deltaTime);
         }
 
         public override void Exit()
         {
             stateMachine.InputManager.RollEvent -= OnRoll;
+            stateMachine.InputManager.BlockEvent -= OnBlock;
         }
 
         void OnRoll()
         {
             stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
+            return;
+        }
+
+        void OnBlock()
+        {
+            stateMachine.SwitchState(new PlayerBlockState(stateMachine));
             return;
         }
     }

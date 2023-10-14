@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TheNecromancers.StateMachine
 {
-    public abstract class StateMachine : MonoBehaviour
+    public class StateMachine : MonoBehaviour
     {
         private State currentState;
 

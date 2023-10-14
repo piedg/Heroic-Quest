@@ -1,15 +1,9 @@
 using UnityEngine;
 using TheNecromancers.StateMachine.Player;
 
-public class PlayerMovementState : PlayerBaseState
+public abstract class PlayerMovementState : PlayerBaseState
 {
     public PlayerMovementState(PlayerStateMachine stateMachine) : base(stateMachine) { }
-
-    public override void Enter() { }
-
-    public override void Update(float deltaTime) { }
-
-    public override void Exit() { }
 
     protected void Move(float deltaTime)
     {

@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TheNecromancers.CustomPhysics;
 using UnityEngine;
 
 namespace TheNecromancers.Combat
 {
     public class WeaponLogic : MonoBehaviour
     {
-        [SerializeField] LayerMask LayerToInteract;
+        [SerializeField] LayerMask layerToInteract;
         private int damage;
         private float knockback;
 
@@ -20,7 +21,7 @@ namespace TheNecromancers.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!((LayerToInteract.value & (1 << other.transform.gameObject.layer)) > 0)) { return; }
+            if (!((layerToInteract.value & (1 << other.transform.gameObject.layer)) > 0)) { return; }
 
             if (alreadyCollidedWith.Contains(other)) { return; }
 
@@ -32,13 +33,13 @@ namespace TheNecromancers.Combat
                      RemoveColliders();
                  }*/
 
-            /*       if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
-                   {
-                       Vector3 direction = (other.transform.position - transform.position).normalized;
-                       direction.y = 0;
-                       forceReceiver.AddForce(direction * knockback);
-                       return;
-                   }*/
+            if (other.TryGetComponent(out ForceReceiver forceReceiver))
+            {
+                Vector3 direction = (other.transform.position - transform.position).normalized;
+                direction.y = 0;
+                forceReceiver.AddForce(direction * knockback);
+                return;
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -59,11 +60,11 @@ namespace TheNecromancers.Combat
 
             if (isEnemy)
             {
-                LayerToInteract.value = 1 << LayerMask.NameToLayer("Player");
+                layerToInteract.value = 1 << LayerMask.NameToLayer("Player");
             }
             else
             {
-                LayerToInteract.value = 1 << LayerMask.NameToLayer("Enemy");
+                layerToInteract.value = 1 << LayerMask.NameToLayer("Enemy");
             }
         }
 

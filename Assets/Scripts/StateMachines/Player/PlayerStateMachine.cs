@@ -27,6 +27,7 @@ namespace TheNecromancers.StateMachine.Player
         [field: Header("Attack Settings")]
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
+        [field: SerializeField] public Transform LeftHandHolder { get; private set; }
         public Attack[] Attacks { get; set; }
 
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }

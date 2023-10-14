@@ -11,6 +11,7 @@ namespace TheNecromancers.Managers
         public bool IsAttacking { get; private set; }
 
         public event Action RollEvent;
+        public event Action BlockEvent;
 
         private Controls controls;
 
@@ -66,6 +67,13 @@ namespace TheNecromancers.Managers
             if (!context.performed) { return; }
 
             RollEvent?.Invoke();
+        }
+
+        public void OnBlock(InputAction.CallbackContext context)
+        {
+            if(!context.performed) { return; }
+
+            BlockEvent?.Invoke();
         }
     }
 }

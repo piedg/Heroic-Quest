@@ -6,9 +6,9 @@ namespace TheNecromancers.StateMachine.Player
 {
     public class PlayerRollState : PlayerMovementState
     {
-        private readonly int DashBlendTreeHash = Animator.StringToHash("Roll");
+        private readonly int dashBlendTreeHash = Animator.StringToHash("Roll");
 
-        private const float CrossFadeDuration = 0.3f;
+        private const float crossFadeDuration = 0.3f;
 
         Vector3 direction;
         private float remainingRollTime;
@@ -20,7 +20,7 @@ namespace TheNecromancers.StateMachine.Player
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(DashBlendTreeHash, CrossFadeDuration);
+            stateMachine.Animator.CrossFadeInFixedTime(dashBlendTreeHash, crossFadeDuration);
             remainingRollTime = stateMachine.RollDuration;
 
             //AudioManager.Instance.PlayRandomClip(stateMachine.AudioClips.Roll);

@@ -10,8 +10,8 @@ namespace TheNecromancers.CustomPhysics
     /// </summary>
     public class ForceReceiver : MonoBehaviour
     {
-        [SerializeField] private CharacterController Controller;
-        [SerializeField] private NavMeshAgent Agent;
+        [SerializeField] private CharacterController controller;
+        [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float drag = 0.3f;
 
         private Vector3 dampingVelocity;
@@ -22,20 +22,20 @@ namespace TheNecromancers.CustomPhysics
 
         private void Awake()
         {
-            if (TryGetComponent(out CharacterController Controller))
+            if (TryGetComponent(out CharacterController controller))
             {
-                this.Controller = Controller;
+                this.controller = controller;
             }
 
-            if (TryGetComponent(out NavMeshAgent Agent))
+            if (TryGetComponent(out NavMeshAgent agent))
             {
-                this.Agent = Agent;
+                this.agent = agent;
             }
         }
 
         private void Update()
         {
-            if (verticalVelocity < 0f && Controller.isGrounded)
+            if (verticalVelocity < 0f && controller.isGrounded)
             {
                 verticalVelocity = Physics.gravity.y * Time.deltaTime;
             }
@@ -46,12 +46,12 @@ namespace TheNecromancers.CustomPhysics
 
             impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
 
-            if (Agent != null)
+            if (agent != null)
             {
                 if (impact.sqrMagnitude < 0.2f * 0.2f)
                 {
                     impact = Vector3.zero;
-                    Agent.enabled = true;
+                    agent.enabled = true;
                 }
             }
         }
@@ -66,9 +66,9 @@ namespace TheNecromancers.CustomPhysics
         {
             impact += force;
 
-            if (Agent != null)
+            if (agent != null)
             {
-                Agent.enabled = false;
+                agent.enabled = false;
             }
         }
     }
