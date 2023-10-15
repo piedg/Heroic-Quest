@@ -22,17 +22,14 @@ namespace TheNecromancers.StateMachine.Player
 
             stateMachine.InputManager.RollEvent += OnRoll;
             stateMachine.InputManager.BlockEvent += OnBlock;
+            stateMachine.InputManager.InteractEvent += OnInteract;
         }
 
         public override void Update(float deltaTime)
         {
             movement = CalculateMovement();
 
-            if (stateMachine.InputManager.IsAttacking)
-            {
-                stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
-                return;
-            }
+            OnAttack();
 
             Move(movement * stateMachine.MovementSpeed, deltaTime);
 
@@ -55,13 +52,27 @@ namespace TheNecromancers.StateMachine.Player
         void OnRoll()
         {
             stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
-            return;
         }
 
         void OnBlock()
         {
+            if (stateMachine.CurrentWeapon.IsUnarmed()) return;
+
             stateMachine.SwitchState(new PlayerBlockState(stateMachine));
-            return;
+        }
+
+        void OnInteract()
+        {
+            stateMachine.SwitchState(new PlayerInteractState(stateMachine));
+        }
+
+        void OnAttack()
+        {
+            if (!stateMachine.CurrentWeapon.IsUnarmed() && stateMachine.InputManager.IsAttacking)
+            {
+                stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
+                return;
+            }
         }
     }
 }

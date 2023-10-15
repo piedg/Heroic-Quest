@@ -3,7 +3,6 @@ using TheNecromancers.Managers;
 using TheNecromancers.Combat;
 using TheNecromancers.CustomPhysics;
 using TheNecromancers.Data;
-using System.Collections.Generic;
 
 namespace TheNecromancers.StateMachine.Player
 {

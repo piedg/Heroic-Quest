@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20934b298721114198ac77e6788a590, type: 3}
   m_Name: Great Axe
   m_EditorClassIdentifier: 
-  <ItemPrefab>k__BackingField: {fileID: 4331801402885709215, guid: b27e2bcbe95e5bb458c7b6cbed649f68,
+  inventoryPrefab: {fileID: 0}
+  itemPrefab: {fileID: 4331801402885709215, guid: b27e2bcbe95e5bb458c7b6cbed649f68,
     type: 3}
+  type: 2
+  descriptionTitle: 
+  description: 
   <Damage>k__BackingField: 50
-  <AnimationLayer>k__BackingField: 0
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: dadcb28a21650e9448673009e25f32c5,
+    type: 2}
   <Knockbacks>k__BackingField:
   - 0
   - 0
@@ -46,3 +51,4 @@ MonoBehaviour:
     <ComboAttackTime>k__BackingField: 0.7
     <Force>k__BackingField: 3
     <ForceTime>k__BackingField: 0.1
+  <WeaponType>k__BackingField: 3

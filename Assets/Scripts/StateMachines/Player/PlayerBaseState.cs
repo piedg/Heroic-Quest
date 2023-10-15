@@ -10,5 +10,21 @@ namespace TheNecromancers.StateMachine.Player
         {
             this.stateMachine = stateMachine;
         }
+
+        protected void ReturnToLocomotion()
+        {
+            stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
+
+            /* if (stateMachine.Targeter.CurrentTarget != null)
+             {
+                 Debug.Log("Go To Targeting");
+                 stateMachine.Targeter.ShowIndicator();
+                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+             }
+             else
+             {
+                 stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
+             }*/
+        }
     }
 }

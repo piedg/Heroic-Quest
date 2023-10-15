@@ -28,8 +28,6 @@ namespace TheNecromancers.StateMachine.Player
             stateMachine.Attacks = stateMachine.CurrentWeapon.Attacks;
             stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentWeapon.Damage, stateMachine.CurrentWeapon.Knockbacks[attackIndex]);
 
-            //stateMachine.transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, -90f, 0);
-
             stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
         }
 
@@ -55,7 +53,7 @@ namespace TheNecromancers.StateMachine.Player
             }
             else
             {
-                stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
+                ReturnToLocomotion();
             }
 
             previousFrameTime = normalizedTime;

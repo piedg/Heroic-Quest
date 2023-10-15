@@ -12,6 +12,7 @@ namespace TheNecromancers.Managers
 
         public event Action RollEvent;
         public event Action BlockEvent;
+        public event Action InteractEvent;
 
         private Controls controls;
 
@@ -71,9 +72,15 @@ namespace TheNecromancers.Managers
 
         public void OnBlock(InputAction.CallbackContext context)
         {
-            if(!context.performed) { return; }
+            if (!context.performed) { return; }
 
             BlockEvent?.Invoke();
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            InteractEvent?.Invoke();
         }
     }
 }

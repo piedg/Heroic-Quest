@@ -29,6 +29,11 @@ namespace TheNecromancers.Data
             }
         }
 
+        public bool IsUnarmed()
+        {
+            return WeaponType == eWeaponType.Unarmed;
+        }
+
         private void UpdateAnimator(Animator animator)
         {
             var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
