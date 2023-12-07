@@ -7,7 +7,6 @@ using TheNecromancers.Data;
 namespace TheNecromancers.StateMachine.Player
 {
     [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(InputManager))]
     [RequireComponent(typeof(ForceReceiver))]
     public class PlayerStateMachine : StateMachine
@@ -25,7 +24,7 @@ namespace TheNecromancers.StateMachine.Player
         [field: SerializeField] public float RollForce { get; private set; }
         [field: SerializeField] public float RollDuration { get; private set; }
 
-        [field: Header("Attack Settings")]
+        [field: Header("Attacking Settings")]
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
@@ -40,7 +39,7 @@ namespace TheNecromancers.StateMachine.Player
         {
             InputManager = GetComponent<InputManager>();
             Controller = GetComponent<CharacterController>();
-            Animator = GetComponent<Animator>();
+            Animator = GetComponentInChildren<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
         }
 

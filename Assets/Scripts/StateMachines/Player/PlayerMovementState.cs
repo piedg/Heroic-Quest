@@ -36,4 +36,5 @@ public abstract class PlayerMovementState : PlayerBaseState
             Quaternion.LookRotation(movement),
             deltaTime * stateMachine.RotationSpeed);
     }
+
 }
