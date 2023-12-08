@@ -3,12 +3,14 @@ using TheNecromancers.Managers;
 using TheNecromancers.Combat;
 using TheNecromancers.CustomPhysics;
 using TheNecromancers.Data;
+using TheNecromancers.Gameplay.Player;
 
 namespace TheNecromancers.StateMachine.Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(InputManager))]
     [RequireComponent(typeof(ForceReceiver))]
+    [RequireComponent(typeof(InteractionDetector))]
     public class PlayerStateMachine : StateMachine
     {
         [field: Header("Components")]
@@ -16,6 +18,7 @@ namespace TheNecromancers.StateMachine.Player
         [field: SerializeField] public CharacterController Controller { get; private set; }
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
+        [field: SerializeField] public InteractionDetector InteractionDetector { get; private set; }
 
         [field: Header("Movement Settings")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -41,6 +44,7 @@ namespace TheNecromancers.StateMachine.Player
             Controller = GetComponent<CharacterController>();
             Animator = GetComponentInChildren<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
+            InteractionDetector = GetComponent<InteractionDetector>();
         }
 
         private void Start()

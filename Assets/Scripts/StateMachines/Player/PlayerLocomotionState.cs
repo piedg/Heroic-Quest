@@ -63,6 +63,9 @@ namespace TheNecromancers.StateMachine.Player
 
         void OnInteract()
         {
+            if (stateMachine.InteractionDetector.CurrentTarget == null) { return; }
+
+            stateMachine.InteractionDetector.CurrentTarget.OnInteract();
             stateMachine.SwitchState(new PlayerInteractState(stateMachine));
         }
 

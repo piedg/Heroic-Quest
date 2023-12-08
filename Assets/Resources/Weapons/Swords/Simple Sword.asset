@@ -19,15 +19,29 @@ MonoBehaviour:
   descriptionTitle: 
   description: 
   <Damage>k__BackingField: 10
-  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: d057456e55e041d4788f926d5968ec48,
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 0c9948ed775417144837039ca9d88556,
     type: 2}
   <Knockbacks>k__BackingField:
+  - 0
+  - 0
   - 0
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.65
+    <Force>k__BackingField: 0
+    <ForceTime>k__BackingField: 0
+  - <AnimationName>k__BackingField: Attack2
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.75
+    <Force>k__BackingField: 0
+    <ForceTime>k__BackingField: 0
+  - <AnimationName>k__BackingField: Attack3
+    <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: -1
-    <ComboAttackTime>k__BackingField: 0.7
-    <Force>k__BackingField: 1.5
-    <ForceTime>k__BackingField: 0.1
+    <ComboAttackTime>k__BackingField: 0.85
+    <Force>k__BackingField: 0
+    <ForceTime>k__BackingField: 0
   <WeaponType>k__BackingField: 1

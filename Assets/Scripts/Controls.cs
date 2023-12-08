@@ -219,7 +219,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""98e98b40-194e-4743-8531-9e2e9dde1f04"",
+                    ""id"": ""ea48974f-4fc7-4bf7-b822-2a550b789727"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",

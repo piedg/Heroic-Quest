@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace TheNecromancers.StateMachine.Player
 {
-
     public class PlayerInteractState : PlayerBaseState
     {
         private readonly int interactHash = Animator.StringToHash("Interact");
@@ -15,7 +14,6 @@ namespace TheNecromancers.StateMachine.Player
             stateMachine.Animator.CrossFadeInFixedTime(interactHash, crossFadeDuration);
             stateMachine.WeaponLogic.gameObject.SetActive(false);
         }
-
 
         public override void Update(float deltaTime)
         {
@@ -30,7 +28,7 @@ namespace TheNecromancers.StateMachine.Player
         public override void Exit()
         {
             stateMachine.WeaponLogic.gameObject.SetActive(true);
-            //stateMachine.InteractionDetector.CurrentTarget = null;
+            stateMachine.InteractionDetector.CurrentTarget = null;
         }
     }
 }
