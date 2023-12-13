@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TheNecromancers.CustomPhysics;
 
-namespace TheNecromancers.Combat
+namespace TheNecromancers.Gameplay.Combat.Attack
 {
     public class WeaponLogic : MonoBehaviour
     {

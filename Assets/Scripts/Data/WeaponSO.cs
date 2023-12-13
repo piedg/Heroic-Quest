@@ -1,5 +1,5 @@
 using UnityEngine;
-using TheNecromancers.Combat;
+using TheNecromancers.Gameplay.Combat.Attack;
 
 namespace TheNecromancers.Data
 {

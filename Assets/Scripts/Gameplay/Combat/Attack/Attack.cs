@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TheNecromancers.Combat
+namespace TheNecromancers.Gameplay.Combat.Attack
 {
     [Serializable]
     public class Attack

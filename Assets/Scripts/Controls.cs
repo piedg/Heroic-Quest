@@ -71,6 +71,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd6376f4-bb79-4385-b646-73e71961730d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectNextTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""65345a40-6567-40fe-8084-f5cfcb155260"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectPrevTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""b239c210-e0af-4bdc-aa36-6f8ce05d91ef"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +254,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75778a1c-b9fb-49bd-8bb2-f744af05ec81"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee0804aa-1be3-4b8e-a628-24c1b6870da6"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fadc7d1a-96d6-43d6-8bc1-b1d97ae9877d"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectNextTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e760931-9efb-499e-8fc1-98b52c57241f"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPrevTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +339,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_SelectTarget = m_Player.FindAction("SelectTarget", throwIfNotFound: true);
+        m_Player_SelectNextTarget = m_Player.FindAction("SelectNextTarget", throwIfNotFound: true);
+        m_Player_SelectPrevTarget = m_Player.FindAction("SelectPrevTarget", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -334,6 +408,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Roll;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_SelectTarget;
+    private readonly InputAction m_Player_SelectNextTarget;
+    private readonly InputAction m_Player_SelectPrevTarget;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -343,6 +420,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @SelectTarget => m_Wrapper.m_Player_SelectTarget;
+        public InputAction @SelectNextTarget => m_Wrapper.m_Player_SelectNextTarget;
+        public InputAction @SelectPrevTarget => m_Wrapper.m_Player_SelectPrevTarget;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -367,6 +447,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @SelectTarget.started += instance.OnSelectTarget;
+            @SelectTarget.performed += instance.OnSelectTarget;
+            @SelectTarget.canceled += instance.OnSelectTarget;
+            @SelectNextTarget.started += instance.OnSelectNextTarget;
+            @SelectNextTarget.performed += instance.OnSelectNextTarget;
+            @SelectNextTarget.canceled += instance.OnSelectNextTarget;
+            @SelectPrevTarget.started += instance.OnSelectPrevTarget;
+            @SelectPrevTarget.performed += instance.OnSelectPrevTarget;
+            @SelectPrevTarget.canceled += instance.OnSelectPrevTarget;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -386,6 +475,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @SelectTarget.started -= instance.OnSelectTarget;
+            @SelectTarget.performed -= instance.OnSelectTarget;
+            @SelectTarget.canceled -= instance.OnSelectTarget;
+            @SelectNextTarget.started -= instance.OnSelectNextTarget;
+            @SelectNextTarget.performed -= instance.OnSelectNextTarget;
+            @SelectNextTarget.canceled -= instance.OnSelectNextTarget;
+            @SelectPrevTarget.started -= instance.OnSelectPrevTarget;
+            @SelectPrevTarget.performed -= instance.OnSelectPrevTarget;
+            @SelectPrevTarget.canceled -= instance.OnSelectPrevTarget;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -428,5 +526,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnRoll(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSelectTarget(InputAction.CallbackContext context);
+        void OnSelectNextTarget(InputAction.CallbackContext context);
+        void OnSelectPrevTarget(InputAction.CallbackContext context);
     }
 }

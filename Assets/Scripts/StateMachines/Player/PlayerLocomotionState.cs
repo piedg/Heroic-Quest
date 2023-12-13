@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheNecromancers.StateMachine.Player
@@ -22,6 +21,7 @@ namespace TheNecromancers.StateMachine.Player
 
             stateMachine.InputManager.RollEvent += OnRoll;
             stateMachine.InputManager.BlockEvent += OnBlock;
+            stateMachine.InputManager.TargetEvent += OnTarget;
             stateMachine.InputManager.InteractEvent += OnInteract;
         }
 
@@ -39,14 +39,21 @@ namespace TheNecromancers.StateMachine.Player
                 return;
             }
 
-            stateMachine.Animator.SetFloat(speedParamHash, stateMachine.Controller.velocity.magnitude, animatorDampTime, deltaTime);
+            UpdateAnimator(deltaTime);
             FaceMovementDirection(movement, deltaTime);
+        }
+
+        private void UpdateAnimator(float deltaTime)
+        {
+            stateMachine.Animator.SetFloat(speedParamHash, stateMachine.Controller.velocity.magnitude, animatorDampTime, deltaTime);
         }
 
         public override void Exit()
         {
             stateMachine.InputManager.RollEvent -= OnRoll;
             stateMachine.InputManager.BlockEvent -= OnBlock;
+            stateMachine.InputManager.TargetEvent -= OnTarget;
+            stateMachine.InputManager.InteractEvent -= OnInteract;
         }
 
         void OnRoll()
@@ -65,7 +72,7 @@ namespace TheNecromancers.StateMachine.Player
         {
             if (stateMachine.InteractionDetector.CurrentTarget == null) { return; }
 
-            stateMachine.InteractionDetector.CurrentTarget.OnInteract();
+            stateMachine.InteractionDetector.CurrentTarget.Interact();
             stateMachine.SwitchState(new PlayerInteractState(stateMachine));
         }
 
@@ -76,6 +83,13 @@ namespace TheNecromancers.StateMachine.Player
                 stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
                 return;
             }
+        }
+
+        void OnTarget()
+        {
+            if (!stateMachine.Targeter.SelectTarget()) { return; }
+
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
     }
 }

@@ -30,8 +30,7 @@ namespace TheNecromancers.StateMachine.Player
 
             if (remainingRollTime <= 0f)
             {
-                //ReturnToLocomotion();
-                stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
+                ReturnToLocomotion();
                 return;
             }
 

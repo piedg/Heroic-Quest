@@ -14,6 +14,10 @@ namespace TheNecromancers.Managers
         public event Action BlockEvent;
         public event Action InteractEvent;
 
+        public event Action TargetEvent;
+        public event Action NextTargetEvent;
+        public event Action PrevTargetEvent;
+
         private Controls controls;
 
         private void Start()
@@ -81,6 +85,24 @@ namespace TheNecromancers.Managers
         {
             if (!context.performed) { return; }
             InteractEvent?.Invoke();
+        }
+
+        public void OnSelectTarget(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            TargetEvent?.Invoke();
+        }
+
+        public void OnSelectPrevTarget(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            PrevTargetEvent?.Invoke();
+        }
+
+        public void OnSelectNextTarget(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+            NextTargetEvent?.Invoke();
         }
     }
 }

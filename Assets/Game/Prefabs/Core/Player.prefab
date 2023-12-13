@@ -1159,7 +1159,8 @@ GameObject:
   - component: {fileID: 1651181489480645812}
   - component: {fileID: 19611742917140573}
   - component: {fileID: 9028476321078857824}
-  - component: {fileID: 2441213401718694030}
+  - component: {fileID: 8443414367914881218}
+  - component: {fileID: 6979050166341232285}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1254,10 +1255,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7aefdfa1c17a71489733e20cdebf480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  Agent: {fileID: 0}
+  controller: {fileID: 0}
+  agent: {fileID: 0}
   drag: 0.3
---- !u!114 &2441213401718694030
+--- !u!114 &8443414367914881218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151982542086845250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf1366830624da479257e8a5a5e7119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LayerToInteract>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
+  <InteractionRange>k__BackingField: 0
+  <Colliders>k__BackingField: []
+--- !u!114 &6979050166341232285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1273,6 +1291,7 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 0}
   <Animator>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
+  <InteractionDetector>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 4.197
   <TargetingMovementSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 10
@@ -1280,6 +1299,7 @@ MonoBehaviour:
   <RollDuration>k__BackingField: 1.05
   <WeaponLogic>k__BackingField: {fileID: 0}
   <RightHandHolder>k__BackingField: {fileID: 3066094760843531868}
+  <LeftHandHolder>k__BackingField: {fileID: 0}
   <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
     type: 2}
 --- !u!1 &3392956121609593443

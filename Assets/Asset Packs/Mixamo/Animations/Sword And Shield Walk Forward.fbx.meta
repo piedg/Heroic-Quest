@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f173e8158d7e85e4eb24f1aad238c8fe
+guid: b36fd09f6ffb5af479084f58d6b9526e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -15,7 +15,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Synty_1H_MeleeAttack_2
+      name: Sword And Shield Walk Forward
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

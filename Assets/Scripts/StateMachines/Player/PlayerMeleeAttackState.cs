@@ -1,4 +1,4 @@
-using TheNecromancers.Combat;
+using TheNecromancers.Gameplay.Combat.Attack;
 using UnityEngine;
 
 namespace TheNecromancers.StateMachine.Player

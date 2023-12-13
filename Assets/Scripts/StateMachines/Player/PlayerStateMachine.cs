@@ -1,9 +1,11 @@
 using UnityEngine;
 using TheNecromancers.Managers;
-using TheNecromancers.Combat;
 using TheNecromancers.CustomPhysics;
 using TheNecromancers.Data;
-using TheNecromancers.Gameplay.Player;
+using TheNecromancers.Gameplay.Interaction;
+using TheNecromancers.Gameplay.Combat.Targeting;
+using TheNecromancers.Gameplay.Combat.Attack;
+
 
 namespace TheNecromancers.StateMachine.Player
 {
@@ -19,6 +21,7 @@ namespace TheNecromancers.StateMachine.Player
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public InteractionDetector InteractionDetector { get; private set; }
+        [field: SerializeField] public Targeter Targeter { get; private set; }
 
         [field: Header("Movement Settings")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -32,19 +35,18 @@ namespace TheNecromancers.StateMachine.Player
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
         public Attack[] Attacks { get; set; }
-
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
 
         public Transform MainCameraTransform { get; private set; }
-
 
         private void Awake()
         {
             InputManager = GetComponent<InputManager>();
             Controller = GetComponent<CharacterController>();
-            Animator = GetComponentInChildren<Animator>();
+            Animator = GetComponent<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
             InteractionDetector = GetComponent<InteractionDetector>();
+            Targeter = GetComponentInChildren<Targeter>();
         }
 
         private void Start()

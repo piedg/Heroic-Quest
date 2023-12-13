@@ -1,3 +1,4 @@
+using TheNecromancers.Gameplay.Interaction;
 using UnityEngine;
 
 public class PickuppableItem : MonoBehaviour, IInteractable
@@ -10,21 +11,21 @@ public class PickuppableItem : MonoBehaviour, IInteractable
         if (!isInteractable) { gameObject.SetActive(false); }
     }
 
-    public void OnInteract()
+    public void Interact()
     {
         if (!isInteractable) return;
         isInteractable = false;
         gameObject.SetActive(false);
     }
 
-    public void OnStartHover()
+    public void StartHover()
     {
         if (!isInteractable) return;
 
         Debug.Log("OnStartHover");
     }
 
-    public void OnEndHover()
+    public void EndHover()
     {
         if (!isInteractable) return;
 

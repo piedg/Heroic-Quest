@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TheNecromancers.Gameplay.Player
+namespace TheNecromancers.Gameplay.Interaction
 {
     public class InteractionDetector : MonoBehaviour
     {
@@ -41,18 +41,18 @@ namespace TheNecromancers.Gameplay.Player
                             if (interactable == CurrentTarget) { return; }
                             else if (CurrentTarget != null)
                             {
-                                CurrentTarget.OnEndHover();
+                                CurrentTarget.EndHover();
                                 CurrentTarget = interactable;
                                 OnCurrentInteraction?.Invoke(CurrentTarget);
 
-                                CurrentTarget.OnStartHover();
+                                CurrentTarget.StartHover();
                                 return;
                             }
                             else
                             {
                                 CurrentTarget = interactable;
                                 OnCurrentInteraction?.Invoke(CurrentTarget);
-                                CurrentTarget.OnStartHover();
+                                CurrentTarget.StartHover();
                             }
                         }
                         else
@@ -72,7 +72,7 @@ namespace TheNecromancers.Gameplay.Player
         {
             if (currentTarget != null)
             {
-                currentTarget.OnEndHover();
+                currentTarget.EndHover();
                 currentTarget = null;
                 OnCurrentInteraction?.Invoke(null);
             }
