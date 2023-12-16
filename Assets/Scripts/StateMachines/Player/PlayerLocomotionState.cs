@@ -87,6 +87,7 @@ namespace TheNecromancers.StateMachine.Player
 
         void OnTarget()
         {
+            Debug.Log("OnTarget");
             if (!stateMachine.Targeter.SelectTarget()) { return; }
 
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));

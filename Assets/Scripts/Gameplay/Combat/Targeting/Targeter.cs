@@ -8,13 +8,27 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
         [SerializeField] private Transform TargetIndicator;
 
         private Camera mainCamera;
+        private SphereCollider sphereCollider;
         private List<Target> targets = new List<Target>();
+
         public Target CurrentTarget { get; private set; }
         private Transform currentTargetTransform;
+
+        [field: SerializeField] public float DetectionRange { get; private set; }
+
+
+        private void Awake()
+        {
+            sphereCollider = GetComponent<SphereCollider>();
+        }
 
         private void Start()
         {
             mainCamera = Camera.main;
+
+            sphereCollider.radius = DetectionRange;
+            sphereCollider.isTrigger = true;
+
             TargetIndicator.gameObject.SetActive(false);
         }
 
@@ -43,8 +57,11 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.TryGetComponent(out Target target)) { return; }
+            if (CurrentTarget == null) { return; }
 
+            // questo risolve il fatto che rollando senza essere dentro il targeting viene lockato un nemico
+            // ma produce un bug per cui quando sei loccato ed esci dal trigger continua ad essere lockato
+            if (!other.TryGetComponent(out Target target)) { return; }
             RemoveTarget(target);
         }
 
@@ -74,7 +91,7 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
             if (closestTarget == null) { return false; }
 
-            CurrentTarget = closestTarget;
+            CurrentTarget = closestTarget; 
             SetTargetIndicator(CurrentTarget);
 
             return true;
@@ -98,7 +115,7 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
             if (targets.Count > 0)
             {
-                CurrentTarget = targets[0];
+                CurrentTarget = targets[0]; 
             }
 
             SetTargetIndicator(CurrentTarget);
@@ -139,7 +156,6 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
         public void ShowIndicator()
         {
-            Debug.Log("Show indicatort");
             TargetIndicator.gameObject.SetActive(true);
         }
     }

@@ -25,11 +25,11 @@ namespace TheNecromancers.StateMachine.Player
             stateMachine.Targeter.ShowIndicator();
 
             //stateMachine.InputManager.BlockEvent += OnBlock;
-            stateMachine.InputManager.RollEvent += OnRoll;
 
             stateMachine.InputManager.TargetEvent += OnTarget;
             stateMachine.InputManager.NextTargetEvent += OnNextTarget;
             stateMachine.InputManager.PrevTargetEvent += OnPrevTarget;
+            stateMachine.InputManager.RollEvent += OnRoll;
 
             //stateMachine.Health.OnTakeDamage += HandleTakeDamage;
 
@@ -53,25 +53,21 @@ namespace TheNecromancers.StateMachine.Player
             }
 
             movement.Normalize();
-
             ConvertDirection(movement);
 
             Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
 
-            PlayFootSteps();
             UpdateAnimator(deltaTime);
             FaceOnTarget(deltaTime);
         }
 
         public override void Exit()
         {
-            //   stateMachine.InputManager.BlockEvent -= OnBlock;
-            stateMachine.InputManager.RollEvent -= OnRoll;
-
+            // stateMachine.InputManager.BlockEvent -= OnBlock;
             stateMachine.InputManager.TargetEvent -= OnTarget;
             stateMachine.InputManager.NextTargetEvent -= OnNextTarget;
             stateMachine.InputManager.PrevTargetEvent -= OnPrevTarget;
-
+            stateMachine.InputManager.RollEvent -= OnRoll;
             // stateMachine.Health.OnTakeDamage -= HandleTakeDamage;
         }
 
@@ -88,31 +84,21 @@ namespace TheNecromancers.StateMachine.Player
             forwardAmount = localMove.z;
         }
 
-        private void OnTarget()
-        {
-            stateMachine.Targeter.Cancel();
-            stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
-        }
-
         private void UpdateAnimator(float deltaTime)
         {
             stateMachine.Animator.SetFloat(targetingForwardHash, rightAmount, animatorDampTime, deltaTime);
             stateMachine.Animator.SetFloat(targetingRightHash, forwardAmount, animatorDampTime, deltaTime);
         }
 
-        void PlayFootSteps()
+        private void OnTarget()
         {
-            if (Time.fixedTime > nextStep)
-            {
-                nextStep = Time.fixedTime + stepRate;
-                // AudioManager.Instance.PlayRandomClip(stateMachine.AudioClips.Footsteps);
-            }
+            stateMachine.Targeter.Cancel();
+            stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
         }
 
         void OnRoll()
         {
             stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
-            return;
         }
 
         void OnNextTarget()

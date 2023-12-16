@@ -279,8 +279,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fadc7d1a-96d6-43d6-8bc1-b1d97ae9877d"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""id"": ""aad25848-6a10-4e16-a723-b96450b34c96"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -290,8 +290,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e760931-9efb-499e-8fc1-98b52c57241f"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""id"": ""c69bd2e8-f093-4b66-b4c8-50859d76f164"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
