@@ -42,6 +42,6 @@ MonoBehaviour:
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0.85
-    <Force>k__BackingField: 0
-    <ForceTime>k__BackingField: 0
+    <Force>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.1
   <WeaponType>k__BackingField: 1
