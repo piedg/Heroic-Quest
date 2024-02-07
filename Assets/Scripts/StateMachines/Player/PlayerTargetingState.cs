@@ -8,7 +8,7 @@ namespace TheNecromancers.StateMachine.Player
         private readonly int targetingForwardHash = Animator.StringToHash("TargetingForward");
         private readonly int targetingRightHash = Animator.StringToHash("TargetingRight");
 
-        private const float animatorDampTime = 0.1f;
+        private const float animatorDampTime = 0.25f;
         private const float crossFadeDuration = 0.25f;
 
         Vector3 movement;
@@ -86,8 +86,8 @@ namespace TheNecromancers.StateMachine.Player
 
         private void UpdateAnimator(float deltaTime)
         {
-            stateMachine.Animator.SetFloat(targetingForwardHash, rightAmount, animatorDampTime, deltaTime);
-            stateMachine.Animator.SetFloat(targetingRightHash, forwardAmount, animatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(targetingForwardHash, forwardAmount, animatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(targetingRightHash, rightAmount, animatorDampTime, deltaTime);
         }
 
         private void OnTarget()

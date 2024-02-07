@@ -57,11 +57,12 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
         private void OnTriggerExit(Collider other)
         {
-            if (CurrentTarget == null) { return; }
+            if (!other.TryGetComponent(out Target target)) { return; }
+            //if (CurrentTarget == null) { return; }
 
             // questo risolve il fatto che rollando senza essere dentro il targeting viene lockato un nemico
             // ma produce un bug per cui quando sei loccato ed esci dal trigger continua ad essere lockato
-            if (!other.TryGetComponent(out Target target)) { return; }
+            /*if (!other.TryGetComponent(out Target target)) { return; }*/
             RemoveTarget(target);
         }
 
@@ -91,7 +92,7 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
             if (closestTarget == null) { return false; }
 
-            CurrentTarget = closestTarget; 
+            CurrentTarget = closestTarget;
             SetTargetIndicator(CurrentTarget);
 
             return true;
@@ -115,7 +116,7 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
             if (targets.Count > 0)
             {
-                CurrentTarget = targets[0]; 
+                CurrentTarget = targets[0];
             }
 
             SetTargetIndicator(CurrentTarget);
