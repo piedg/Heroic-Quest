@@ -15,13 +15,11 @@ namespace TheNecromancers.StateMachine.Player
         {
             if (stateMachine.Targeter.CurrentTarget != null)
             {
-                Debug.Log("Ho il target " + stateMachine.Targeter.CurrentTarget);
                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
                 return;
             }
             else
             {
-                Debug.Log("Non ho il target " + stateMachine.Targeter.CurrentTarget);
                 stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
                 return;
             }
