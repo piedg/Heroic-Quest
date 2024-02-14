@@ -33,6 +33,18 @@ namespace TheNecromancers.Managers
             controls.Player.Disable();
         }
 
+        private void Update()
+        {
+            if(controls.UI.enabled)
+            {
+                controls.Player.Disable();
+            }
+            else
+            {
+                controls.Player.Enable();
+            }
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             MovementValue = context.ReadValue<Vector2>();

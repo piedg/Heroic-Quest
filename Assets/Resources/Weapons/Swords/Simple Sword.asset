@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Simple Sword
   m_EditorClassIdentifier: 
   inventoryPrefab: {fileID: 0}
-  itemPrefab: {fileID: 3541478899021020172, guid: 4c3aab6f25c88bb4c9e9207f69db8f15,
+  itemPrefab: {fileID: 4029249430125094278, guid: 7c92135a034089f429b23aef0d9d5dc9,
     type: 3}
   type: 2
   descriptionTitle: 
   description: 
   <Damage>k__BackingField: 10
-  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 0c9948ed775417144837039ca9d88556,
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 0d62e64bb3734d04d9e90179de0d1ec2,
     type: 2}
   <Knockbacks>k__BackingField:
   - 0

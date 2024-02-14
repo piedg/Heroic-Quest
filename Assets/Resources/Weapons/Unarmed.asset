@@ -19,7 +19,8 @@ MonoBehaviour:
   descriptionTitle: 
   description: 
   <Damage>k__BackingField: 1
-  <AnimatorOverride>k__BackingField: {fileID: 0}
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 0d62e64bb3734d04d9e90179de0d1ec2,
+    type: 2}
   <Knockbacks>k__BackingField:
   - 0
   - 0
