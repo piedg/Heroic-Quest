@@ -92,7 +92,7 @@ namespace HeroicQuest.StateMachine.Player
 
         private void OnTarget()
         {
-            //stateMachine.Targeter.Cancel();
+            stateMachine.Targeter.Cancel();
             stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
         }
 

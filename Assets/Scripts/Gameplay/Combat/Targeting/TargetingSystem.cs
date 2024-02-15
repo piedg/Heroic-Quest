@@ -14,9 +14,13 @@ public class TargetingSystem : MonoBehaviour
     {
         // Trova tutti gli oggetti con il tag "Enemy" nell'area di rilevamento
         colliders = Physics.OverlapSphere(transform.position, DetectionRange, LayerMask.GetMask("Enemy"));
-        // Rimuovi i nemici che sono fuori dalla sfera
+
+        if (colliders.Length <= 0)
+        {
+            Cancel();
+        }
+
         RemoveEnemiesOutsideSphere(colliders);
-        if (currentTarget == null) currentTarget = null;
     }
 
     public bool SelectTarget()
@@ -24,6 +28,12 @@ public class TargetingSystem : MonoBehaviour
         currentTarget = FindClosestEnemy(colliders);
 
         return currentTarget != null;
+    }
+
+    public void Cancel()
+    {
+        if (currentTarget == null) { return; }
+        currentTarget = null;
     }
 
     void RemoveEnemiesOutsideSphere(Collider[] colliders)
