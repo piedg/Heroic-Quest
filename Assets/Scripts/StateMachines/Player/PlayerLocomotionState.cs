@@ -87,8 +87,7 @@ namespace HeroicQuest.StateMachine.Player
 
         void OnTarget()
         {
-            if (!stateMachine.Targeter.SelectTarget()) { return; }
-            //stateMachine.Targeter.lockedTarget;
+            if (!stateMachine.Targeter.HasTarget()) { return; }
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
     }

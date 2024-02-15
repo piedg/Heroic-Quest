@@ -1,32 +1,47 @@
 using HeroicQuest.Gameplay.Combat.Targeting;
+using System;
 using UnityEngine;
 
 public class TargetingSystem : MonoBehaviour
 {
     [SerializeField] float DetectionRange = 5f;
+    [SerializeField] Transform TargetIndicator;
 
-    Collider[] colliders;
+    Collider[] targets;
+
     private Transform currentTarget;
-
     public Transform CurrentTarget { get => currentTarget; }
 
     void Update()
     {
         // Trova tutti gli oggetti con il tag "Enemy" nell'area di rilevamento
-        colliders = Physics.OverlapSphere(transform.position, DetectionRange, LayerMask.GetMask("Enemy"));
+        targets = Physics.OverlapSphere(transform.position, DetectionRange, LayerMask.GetMask("Enemy"));
 
-        if (colliders.Length <= 0)
+        if (currentTarget != null && !IsEnemyInColliders(currentTarget, targets))
+        {
+            currentTarget = FindClosestEnemy(targets);
+        }
+
+        if (targets.Length <= 0)
         {
             Cancel();
         }
 
-        RemoveEnemiesOutsideSphere(colliders);
+        RemoveEnemiesOutsideSphere(targets);
+
+        if (currentTarget != null)
+        {
+            TargetIndicator.position = currentTarget.position;
+        }
+        else
+        {
+            TargetIndicator.gameObject.SetActive(false);
+        }
     }
 
-    public bool SelectTarget()
+    public bool HasTarget()
     {
-        currentTarget = FindClosestEnemy(colliders);
-
+        currentTarget = FindClosestEnemy(targets);
         return currentTarget != null;
     }
 
@@ -36,7 +51,7 @@ public class TargetingSystem : MonoBehaviour
         currentTarget = null;
     }
 
-    void RemoveEnemiesOutsideSphere(Collider[] colliders)
+    private void RemoveEnemiesOutsideSphere(Collider[] colliders)
     {
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -50,7 +65,7 @@ public class TargetingSystem : MonoBehaviour
         }
     }
 
-    bool IsEnemyInColliders(Transform enemyTransform, Collider[] colliders)
+    private bool IsEnemyInColliders(Transform enemyTransform, Collider[] colliders)
     {
         foreach (Collider collider in colliders)
         {
@@ -62,13 +77,14 @@ public class TargetingSystem : MonoBehaviour
         return false;
     }
 
-    Transform FindClosestEnemy(Collider[] colliders)
+    private Transform FindClosestEnemy(Collider[] colliders)
     {
         float closestDistance = Mathf.Infinity;
         Transform closestEnemy = null;
 
-        foreach (Collider collider in colliders)
+        for (int i = 0; i < colliders.Length; i++)
         {
+            Collider collider = colliders[i];
             float distance = Vector3.Distance(transform.position, collider.transform.position);
 
             if (distance < closestDistance)
@@ -77,7 +93,34 @@ public class TargetingSystem : MonoBehaviour
                 closestEnemy = collider.transform;
             }
         }
-
         return closestEnemy;
+    }
+
+    public void NextTarget()
+    {
+        /* int nextIndex = (currentTargetIndex + 1);
+         if (nextIndex == targets.Length - 1)
+         {
+             currentTarget = targets[0].transform;
+             return;
+         }
+         currentTarget = targets[nextIndex].transform; */
+    }
+
+    public void PrevTarget()
+    {
+        /* if (currentTargetIndex == 0)
+         {
+             currentTarget = targets[targets.Length - 1].transform;
+             return;
+         }
+
+         int previousIndex = (currentTargetIndex - 1);
+         currentTarget = targets[previousIndex].transform; */
+    }
+
+    public void ShowIndicator()
+    {
+        TargetIndicator.gameObject.SetActive(true);
     }
 }

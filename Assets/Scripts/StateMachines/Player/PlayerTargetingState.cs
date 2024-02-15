@@ -22,7 +22,7 @@ namespace HeroicQuest.StateMachine.Player
 
         public override void Enter()
         {
-            //stateMachine.Targeter.ShowIndicator();
+            stateMachine.Targeter.ShowIndicator();
 
             //stateMachine.InputManager.BlockEvent += OnBlock;
 
@@ -103,12 +103,12 @@ namespace HeroicQuest.StateMachine.Player
 
         void OnNextTarget()
         {
-            // stateMachine.Targeter.NextTarget();
+            stateMachine.Targeter.NextTarget();
         }
 
         void OnPrevTarget()
         {
-            //  stateMachine.Targeter.PrevTarget();
+            stateMachine.Targeter.PrevTarget();
         }
     }
 }
