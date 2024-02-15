@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine.Player
+namespace HeroicQuest.StateMachine.Player
 {
     public class PlayerTargetingState : PlayerMovementState
     {
@@ -15,14 +15,14 @@ namespace TheNecromancers.StateMachine.Player
         float forwardAmount;
         float rightAmount;
 
-        float nextStep;
-        float stepRate = 0.7f;
+        /* float nextStep;
+         float stepRate = 0.7f;*/
 
         public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
-            stateMachine.Targeter.ShowIndicator();
+            //stateMachine.Targeter.ShowIndicator();
 
             //stateMachine.InputManager.BlockEvent += OnBlock;
 
@@ -92,7 +92,7 @@ namespace TheNecromancers.StateMachine.Player
 
         private void OnTarget()
         {
-            stateMachine.Targeter.Cancel();
+            //stateMachine.Targeter.Cancel();
             stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
         }
 
@@ -103,12 +103,12 @@ namespace TheNecromancers.StateMachine.Player
 
         void OnNextTarget()
         {
-            stateMachine.Targeter.NextTarget();
+            // stateMachine.Targeter.NextTarget();
         }
 
         void OnPrevTarget()
         {
-            stateMachine.Targeter.PrevTarget();
+            //  stateMachine.Targeter.PrevTarget();
         }
     }
 }

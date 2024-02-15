@@ -1,11 +1,11 @@
-using TheNecromancers.CustomPhysics;
-using TheNecromancers.Data;
-using TheNecromancers.Gameplay.Combat.Attack;
-using TheNecromancers.Gameplay.Combat.Targeting;
+using HeroicQuest.CustomPhysics;
+using HeroicQuest.Data;
+using HeroicQuest.Gameplay.Combat.Attack;
+using HeroicQuest.Gameplay.Combat.Targeting;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace TheNecromancers.StateMachine.Enemy
+namespace HeroicQuest.StateMachine.Enemy
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CharacterController))]

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TheNecromancers.Gameplay.Interaction
+namespace HeroicQuest.Gameplay.Interaction
 {
     public class InteractionDetector : MonoBehaviour
     {

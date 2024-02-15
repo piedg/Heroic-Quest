@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine.Player
+namespace HeroicQuest.StateMachine.Player
 {
     public class PlayerInteractState : PlayerBaseState
     {

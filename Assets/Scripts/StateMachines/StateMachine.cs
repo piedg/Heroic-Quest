@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine
+namespace HeroicQuest.StateMachine
 {
     public class StateMachine : MonoBehaviour
     {

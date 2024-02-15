@@ -1,4 +1,4 @@
-using TheNecromancers.Gameplay.Interaction;
+using HeroicQuest.Gameplay.Interaction;
 using UnityEngine;
 
 public class PickuppableItem : MonoBehaviour, IInteractable

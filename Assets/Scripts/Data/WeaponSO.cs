@@ -1,7 +1,7 @@
 using UnityEngine;
-using TheNecromancers.Gameplay.Combat.Attack;
+using HeroicQuest.Gameplay.Combat.Attack;
 
-namespace TheNecromancers.Data
+namespace HeroicQuest.Data
 {
     public enum eWeaponType
     {

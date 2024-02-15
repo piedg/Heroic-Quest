@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TheNecromancers.Gameplay.Combat.Targeting
+namespace HeroicQuest.Gameplay.Combat.Targeting
 {
     public class Target : MonoBehaviour
     {

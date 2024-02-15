@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine
+namespace HeroicQuest.StateMachine
 {
     public abstract class State
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TheNecromancers.Managers
+namespace HeroicQuest.Managers
 {
     public class InputManager : MonoBehaviour, Controls.IPlayerActions
     {

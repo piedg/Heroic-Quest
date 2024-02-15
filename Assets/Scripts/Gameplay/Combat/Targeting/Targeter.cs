@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TheNecromancers.Gameplay.Combat.Targeting
+namespace HeroicQuest.Gameplay.Combat.Targeting
 {
     public class Targeter : MonoBehaviour
     {
@@ -11,7 +11,8 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
         private SphereCollider sphereCollider;
         private List<Target> targets = new List<Target>();
 
-        public Target CurrentTarget { get; private set; }
+        private Target currentTarget;
+        public Target CurrentTarget { get => currentTarget; }
         private Transform currentTargetTransform;
 
         [field: SerializeField] public float DetectionRange { get; private set; }
@@ -34,7 +35,7 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
         private void Update()
         {
-            if (CurrentTarget != null)
+            if (currentTarget != null)
             {
                 if (currentTargetTransform != null)
                 {
@@ -58,12 +59,27 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
         private void OnTriggerExit(Collider other)
         {
             if (!other.TryGetComponent(out Target target)) { return; }
-            //if (CurrentTarget == null) { return; }
 
-            // questo risolve il fatto che rollando senza essere dentro il targeting viene lockato un nemico
-            // ma produce un bug per cui quando sei loccato ed esci dal trigger continua ad essere lockato
-            /*if (!other.TryGetComponent(out Target target)) { return; }*/
             RemoveTarget(target);
+        }
+
+        Transform FindClosestEnemy(GameObject[] enemies)
+        {
+            float closestDistance = Mathf.Infinity;
+            Transform closestEnemy = null;
+
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (distance < closestDistance && distance <= DetectionRange)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy.transform;
+                }
+            }
+
+            return closestEnemy;
         }
 
         public bool SelectTarget()
@@ -92,67 +108,62 @@ namespace TheNecromancers.Gameplay.Combat.Targeting
 
             if (closestTarget == null) { return false; }
 
-            CurrentTarget = closestTarget;
-            SetTargetIndicator(CurrentTarget);
+            currentTarget = closestTarget;
+            SetTargetIndicator(currentTarget);
 
             return true;
         }
 
         public void Cancel()
         {
-            if (CurrentTarget == null) { return; }
-            CurrentTarget = null;
+            if (currentTarget == null) { return; }
+            currentTarget = null;
         }
 
         private void RemoveTarget(Target target)
         {
-            if (CurrentTarget == target)
+            if (currentTarget == target)
             {
-                CurrentTarget = null;
+                currentTarget = null;
             }
 
             target.OnDestroyed -= RemoveTarget;
             targets.Remove(target);
 
-            if (targets.Count > 0)
-            {
-                CurrentTarget = targets[0];
-            }
-
-            SetTargetIndicator(CurrentTarget);
+            SetTargetIndicator(currentTarget);
         }
 
         public void NextTarget()
         {
-            if (targets.IndexOf(CurrentTarget) + 1 == targets.Count)
+            if (targets.IndexOf(currentTarget) + 1 == targets.Count)
             {
-                CurrentTarget = targets[0];
+                currentTarget = targets[0];
             }
             else
             {
-                CurrentTarget = targets[targets.IndexOf(CurrentTarget) + 1];
+                currentTarget = targets[targets.IndexOf(currentTarget) + 1];
             }
 
-            SetTargetIndicator(CurrentTarget);
+            SetTargetIndicator(currentTarget);
         }
 
         public void PrevTarget()
         {
-            if (targets.IndexOf(CurrentTarget) == 0)
+            if (targets.IndexOf(currentTarget) == 0)
             {
-                CurrentTarget = targets[targets.Count - 1];
+                currentTarget = targets[targets.Count - 1];
             }
             else
             {
-                CurrentTarget = targets[targets.IndexOf(CurrentTarget) - 1];
+                currentTarget = targets[targets.IndexOf(currentTarget) - 1];
             }
 
-            SetTargetIndicator(CurrentTarget);
+            SetTargetIndicator(currentTarget);
         }
 
-        private void SetTargetIndicator(Target CurrentTarget)
+        private void SetTargetIndicator(Target currentTarget)
         {
-            currentTargetTransform = CurrentTarget?.GetComponent<Transform>();
+            currentTargetTransform = currentTarget?.GetComponent<Transform>();
         }
 
         public void ShowIndicator()

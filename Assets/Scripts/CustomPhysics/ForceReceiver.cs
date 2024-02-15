@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace TheNecromancers.CustomPhysics
+namespace HeroicQuest.CustomPhysics
 {
     /// <summary>
     /// ForceReceiver gestice forze (come il Knockback o il Dash) e gravità su componenti come il CharacterController

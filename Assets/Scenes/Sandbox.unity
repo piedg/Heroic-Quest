@@ -4648,6 +4648,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 41428454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &745566081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 159775921793455252, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+    type: 3}
+  m_PrefabInstance: {fileID: 1436203646218556460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &745566089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745566081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef46535994f07554e929e141d307ca69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetectionRange: 5
 --- !u!1001 &752970811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7506,7 +7525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771701601394688, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 189
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 4771701601394688, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9444,7 +9463,7 @@ GameObject:
   - component: {fileID: 1746337234}
   - component: {fileID: 1746337233}
   - component: {fileID: 1746337232}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10645,7 +10664,7 @@ GameObject:
   - component: {fileID: 1920953522}
   - component: {fileID: 1920953521}
   - component: {fileID: 1920953520}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12274,9 +12293,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
+      propertyPath: <Targeter>k__BackingField
+      value: 
+      objectReference: {fileID: 745566089}
+    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
       propertyPath: <CurrentWeapon>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
+      objectReference: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
         type: 2}
     - target: {fileID: 7135805136308370143, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
@@ -12295,7 +12319,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 3
       addedObject: {fileID: 1727637787}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 159775921793455252, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 745566089}
   m_SourcePrefab: {fileID: 100100000, guid: 7f003dda8cec6f5448a25a5b5b09ab26, type: 3}
 --- !u!33 &2608752715702211369
 MeshFilter:

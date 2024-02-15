@@ -1,5 +1,5 @@
 using UnityEngine;
-using TheNecromancers.StateMachine.Player;
+using HeroicQuest.StateMachine.Player;
 
 public abstract class PlayerMovementState : PlayerBaseState
 {
@@ -41,7 +41,7 @@ public abstract class PlayerMovementState : PlayerBaseState
     {
         if (stateMachine.Targeter.CurrentTarget == null) { return; }
 
-        Vector3 lookPos = stateMachine.Targeter.CurrentTarget.transform.position - stateMachine.transform.position;
+        Vector3 lookPos = stateMachine.Targeter.CurrentTarget.position - stateMachine.transform.position;
         lookPos.y = 0f;
 
         stateMachine.transform.rotation = Quaternion.Lerp(

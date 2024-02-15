@@ -1,4 +1,4 @@
-using TheNecromancers.StateMachine.Player;
+using HeroicQuest.StateMachine.Player;
 using UnityEngine;
 
 public class PlayerBlockState : PlayerMovementState

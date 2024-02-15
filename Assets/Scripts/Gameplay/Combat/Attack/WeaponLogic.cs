@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using TheNecromancers.CustomPhysics;
+using HeroicQuest.CustomPhysics;
 
-namespace TheNecromancers.Gameplay.Combat.Attack
+namespace HeroicQuest.Gameplay.Combat.Attack
 {
     public class WeaponLogic : MonoBehaviour
     {

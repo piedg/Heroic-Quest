@@ -1,13 +1,13 @@
 using UnityEngine;
-using TheNecromancers.Managers;
-using TheNecromancers.CustomPhysics;
-using TheNecromancers.Data;
-using TheNecromancers.Gameplay.Interaction;
-using TheNecromancers.Gameplay.Combat.Targeting;
-using TheNecromancers.Gameplay.Combat.Attack;
+using HeroicQuest.Managers;
+using HeroicQuest.CustomPhysics;
+using HeroicQuest.Data;
+using HeroicQuest.Gameplay.Interaction;
+using HeroicQuest.Gameplay.Combat.Targeting;
+using HeroicQuest.Gameplay.Combat.Attack;
 
 
-namespace TheNecromancers.StateMachine.Player
+namespace HeroicQuest.StateMachine.Player
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(InputManager))]
@@ -21,7 +21,8 @@ namespace TheNecromancers.StateMachine.Player
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public InteractionDetector InteractionDetector { get; private set; }
-        [field: SerializeField] public Targeter Targeter { get; private set; }
+        //[field: SerializeField] public Targeter Targeter { get; private set; }
+        [field: SerializeField] public TargetingSystem Targeter { get; private set; }
 
         [field: Header("Movement Settings")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -46,7 +47,7 @@ namespace TheNecromancers.StateMachine.Player
             Animator = GetComponent<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
             InteractionDetector = GetComponent<InteractionDetector>();
-            Targeter = GetComponentInChildren<Targeter>();
+            Targeter = GetComponentInChildren<TargetingSystem>();
         }
 
         private void Start()

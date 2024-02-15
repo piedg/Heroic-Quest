@@ -1,7 +1,7 @@
-using TheNecromancers.Gameplay.Combat.Attack;
+using HeroicQuest.Gameplay.Combat.Attack;
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine.Player
+namespace HeroicQuest.StateMachine.Player
 {
     public class PlayerMeleeAttackState : PlayerMovementState
     {

@@ -1,4 +1,4 @@
-namespace TheNecromancers.Gameplay.Interaction
+namespace HeroicQuest.Gameplay.Interaction
 {
     public interface IInteractable
     {

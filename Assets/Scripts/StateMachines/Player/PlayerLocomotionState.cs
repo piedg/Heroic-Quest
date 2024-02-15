@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheNecromancers.StateMachine.Player
+namespace HeroicQuest.StateMachine.Player
 {
     public class PlayerLocomotionState : PlayerMovementState
     {
@@ -78,7 +78,7 @@ namespace TheNecromancers.StateMachine.Player
 
         void OnAttack()
         {
-            if (!stateMachine.CurrentWeapon.IsUnarmed() && stateMachine.InputManager.IsAttacking)
+            if (stateMachine.InputManager.IsAttacking)
             {
                 stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
                 return;
@@ -88,7 +88,7 @@ namespace TheNecromancers.StateMachine.Player
         void OnTarget()
         {
             if (!stateMachine.Targeter.SelectTarget()) { return; }
-
+            //stateMachine.Targeter.lockedTarget;
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
     }

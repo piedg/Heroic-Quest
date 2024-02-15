@@ -1,7 +1,7 @@
-using TheNecromancers.StateMachine.Player;
+using HeroicQuest.StateMachine.Player;
 using UnityEngine;
 
-namespace TheNecromancers.Gameplay.Lantern
+namespace HeroicQuest.Gameplay.Lantern
 {
 
     public class LanternController : MonoBehaviour

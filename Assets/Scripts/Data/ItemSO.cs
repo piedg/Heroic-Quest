@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheNecromancers.Data
+namespace HeroicQuest.Data
 {
     public enum eItemType
     {
