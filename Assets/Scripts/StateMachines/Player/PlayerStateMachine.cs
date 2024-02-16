@@ -6,13 +6,14 @@ using HeroicQuest.Gameplay.Interaction;
 using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Combat.Attack;
 
-
 namespace HeroicQuest.StateMachine.Player
 {
-    [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(InputManager))]
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(ForceReceiver))]
     [RequireComponent(typeof(InteractionDetector))]
+    [RequireComponent(typeof(TargetingSystem))]
     public class PlayerStateMachine : StateMachine
     {
         [field: Header("Components")]
