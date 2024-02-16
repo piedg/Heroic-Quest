@@ -21,7 +21,6 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public InteractionDetector InteractionDetector { get; private set; }
-        //[field: SerializeField] public Targeter Targeter { get; private set; }
         [field: SerializeField] public TargetingSystem Targeter { get; private set; }
 
         [field: Header("Movement Settings")]
