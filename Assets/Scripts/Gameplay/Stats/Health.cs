@@ -24,15 +24,15 @@ namespace HeroicQuest.Gameplay.Stats
 
             currentHealth = Mathf.Max(currentHealth - damage, 0);
 
-            OnTakeDamage?.Invoke();
-
             if (currentHealth == 0)
             {
                 OnDie?.Invoke();
             }
 
-            Debug.Log(gameObject.name + " Current health " + currentHealth + " damage received " + damage);
+            // play FX
+            OnTakeDamage?.Invoke();
 
+            Debug.Log(gameObject.name + " Current health " + currentHealth + " damage received " + damage);
         }
 
         public void RestoreLife()

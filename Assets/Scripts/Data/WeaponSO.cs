@@ -37,6 +37,7 @@ namespace HeroicQuest.Data
         private void UpdateAnimator(Animator animator)
         {
             var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+
             if (AnimatorOverride)
             {
                 animator.runtimeAnimatorController = AnimatorOverride;

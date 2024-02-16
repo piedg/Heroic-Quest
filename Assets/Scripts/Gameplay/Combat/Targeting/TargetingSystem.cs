@@ -66,8 +66,8 @@ namespace HeroicQuest.Gameplay.Combat.Targeting
 
                 if (distance < closestDistance)
                 {
-                    closestDistance = distance;
                     currentIndex = i;
+                    closestDistance = distance;
                     closestEnemy = collider.transform;
                 }
             }

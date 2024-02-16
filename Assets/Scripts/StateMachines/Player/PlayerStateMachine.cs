@@ -38,7 +38,6 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
-        public Attack[] Attacks { get; set; }
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
 
         public Transform MainCameraTransform { get; private set; }
@@ -76,19 +75,10 @@ namespace HeroicQuest.StateMachine.Player
             }
         }
 
-        private void OnEnable()
-        {
-
-        }
-
-        private void OnDisable()
-        {
-
-        }
-
         //Animations Events
         void OnStartAttackAnim()
         {
+            WeaponLogic.GetComponent<CapsuleCollider>().enabled = true;
         }
 
         void Hit()
@@ -97,6 +87,7 @@ namespace HeroicQuest.StateMachine.Player
 
         void OnEndAttackAnim()
         {
+            WeaponLogic.GetComponent<CapsuleCollider>().enabled = false;
         }
 
         void FootR()

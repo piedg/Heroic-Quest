@@ -25,7 +25,6 @@ namespace HeroicQuest.StateMachine.Player
 
             direction = CalculateMovement();
 
-            stateMachine.Attacks = stateMachine.CurrentWeapon.Attacks;
             stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentWeapon.Damage, stateMachine.CurrentWeapon.Knockbacks[attackIndex]);
 
             stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
