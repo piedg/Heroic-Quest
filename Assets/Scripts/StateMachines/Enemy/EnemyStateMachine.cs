@@ -2,6 +2,8 @@ using HeroicQuest.CustomPhysics;
 using HeroicQuest.Data;
 using HeroicQuest.Gameplay.Combat.Attack;
 using HeroicQuest.Gameplay.Combat.Targeting;
+using HeroicQuest.Gameplay.Stats;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,11 +14,12 @@ namespace HeroicQuest.StateMachine.Enemy
     [RequireComponent(typeof(ForceReceiver))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Target))]
+    [RequireComponent(typeof(Health))]
     public class EnemyStateMachine : StateMachine
     {
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public CharacterController Controller { get; private set; }
-        // [field: SerializeField] public Health Health { get; private set; }
+        [field: SerializeField] public Health Health { get; private set; }
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public NavMeshAgent Agent { get; private set; }
         // [field: SerializeField] public CooldownManager CooldownManager { get; private set; }
@@ -54,10 +57,29 @@ namespace HeroicQuest.StateMachine.Enemy
         {
             Animator = GetComponent<Animator>();
             Controller = GetComponent<CharacterController>();
-            Animator = GetComponentInChildren<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
             Agent = GetComponent<NavMeshAgent>();
             Target = GetComponent<Target>();
+            Health = GetComponent<Health>();
+
+            Health.OnDie += OnDie;
         }
+
+        private void OnDestroy()
+        {
+            Health.OnDie -= OnDie;
+        }
+
+        private void Start()
+        {
+            SwitchState(new EnemyIdleState(this));
+        }
+
+        private void OnDie()
+        {
+            SwitchState(new EnemyDeadState(this));
+        }
+
+     
     }
 }

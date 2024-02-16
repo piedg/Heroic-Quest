@@ -1,3 +1,4 @@
+using HeroicQuest.Gameplay.Stats;
 using UnityEngine;
 
 namespace HeroicQuest.StateMachine.Player
@@ -27,8 +28,8 @@ namespace HeroicQuest.StateMachine.Player
             //stateMachine.InputManager.BlockEvent += OnBlock;
 
             stateMachine.InputManager.TargetEvent += OnTarget;
-            stateMachine.InputManager.NextTargetEvent += OnNextTarget;
-            stateMachine.InputManager.PrevTargetEvent += OnPrevTarget;
+            stateMachine.InputManager.NextTargetEvent += NextTarget;
+            stateMachine.InputManager.PrevTargetEvent += PrevTarget;
             stateMachine.InputManager.RollEvent += OnRoll;
 
             stateMachine.Health.OnTakeDamage += OnTakeDamage;
@@ -40,6 +41,15 @@ namespace HeroicQuest.StateMachine.Player
         {
             movement = CalculateMovement();
 
+
+            if (stateMachine.Targeter.CurrentTarget.TryGetComponent(out Health enemy))
+            {
+                if (enemy.IsDead)
+                {
+                    NextTarget();
+                    return;
+                }
+            }
             if (stateMachine.InputManager.IsAttacking)
             {
                 stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
@@ -65,8 +75,8 @@ namespace HeroicQuest.StateMachine.Player
         {
             // stateMachine.InputManager.BlockEvent -= OnBlock;
             stateMachine.InputManager.TargetEvent -= OnTarget;
-            stateMachine.InputManager.NextTargetEvent -= OnNextTarget;
-            stateMachine.InputManager.PrevTargetEvent -= OnPrevTarget;
+            stateMachine.InputManager.NextTargetEvent -= NextTarget;
+            stateMachine.InputManager.PrevTargetEvent -= PrevTarget;
             stateMachine.InputManager.RollEvent -= OnRoll;
             stateMachine.Health.OnTakeDamage -= OnTakeDamage;
         }
@@ -101,12 +111,12 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
         }
 
-        void OnNextTarget()
+        void NextTarget()
         {
             stateMachine.Targeter.NextTarget();
         }
 
-        void OnPrevTarget()
+        void PrevTarget()
         {
             stateMachine.Targeter.PrevTarget();
         }

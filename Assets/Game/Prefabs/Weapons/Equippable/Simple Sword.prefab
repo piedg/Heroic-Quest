@@ -122,4 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerToInteract:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
