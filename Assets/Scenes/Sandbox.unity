@@ -17127,35 +17127,13 @@ PrefabInstance:
       propertyPath: TargetIndicator
       value: 
       objectReference: {fileID: 1431503128}
-    - target: {fileID: 4028558955910965578, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: <CurrentWeapon>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
-        type: 2}
     - target: {fileID: 7135805136308370143, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
-    - target: {fileID: 7535031699741614761, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7535031699741614761, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: TargetIndicator
-      value: 
-      objectReference: {fileID: 1431503128}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7843769667634211640, guid: 7f003dda8cec6f5448a25a5b5b09ab26, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f003dda8cec6f5448a25a5b5b09ab26, type: 3}

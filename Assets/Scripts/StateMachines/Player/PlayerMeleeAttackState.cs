@@ -21,7 +21,7 @@ namespace HeroicQuest.StateMachine.Player
 
         public override void Enter()
         {
-            //       stateMachine.InputManager.TargetEvent += OnTarget;
+            stateMachine.InputManager.TargetEvent += OnTarget;
 
             direction = CalculateMovement();
 
@@ -34,7 +34,7 @@ namespace HeroicQuest.StateMachine.Player
         public override void Update(float deltaTime)
         {
             Move(deltaTime);
-            // FaceOnTarget(deltaTime);
+            FaceOnTarget(deltaTime);
 
             float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Attack");
 
@@ -64,17 +64,17 @@ namespace HeroicQuest.StateMachine.Player
 
         public override void Exit()
         {
-            /*       stateMachine.InputManager.TargetEvent -= OnTarget;
+            stateMachine.InputManager.TargetEvent -= OnTarget;
 
-                   stateMachine.RightHandHolder.transform.GetChild(0).transform.localRotation =
-                       Quaternion.Euler(0, 90f, 0);*/
+            /*stateMachine.RightHandHolder.transform.GetChild(0).transform.localRotation =
+                Quaternion.Euler(0, 90f, 0);*/
         }
 
         private void TryApplyForce()
         {
             if (alreadyAppliedForce) { return; }
 
-            if (direction == Vector3.zero/* || stateMachine.Targeter.CurrentTarget != null*/)
+            if (direction == Vector3.zero || stateMachine.Targeter.CurrentTarget != null)
             {
                 stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
             }
@@ -101,11 +101,12 @@ namespace HeroicQuest.StateMachine.Player
                     )
                 );
         }
+
         private void OnTarget()
         {
-            /*     if (!stateMachine.Targeter.SelectTarget()) { return; }
+            if (!stateMachine.Targeter.SelectTarget()) { return; }
 
-                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));*/
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
     }
 }

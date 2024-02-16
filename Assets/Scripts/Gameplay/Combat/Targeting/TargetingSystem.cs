@@ -17,7 +17,13 @@ namespace HeroicQuest.Gameplay.Combat.Targeting
 
         void Update()
         {
+
             enemies = Physics.OverlapSphere(transform.position, DetectionRange, LayerMask.GetMask("Enemy"));
+
+            if (enemies.Length <= 0)
+            {
+                Cancel();
+            }
 
             UpdateTargetIndicator();
         }
@@ -82,6 +88,12 @@ namespace HeroicQuest.Gameplay.Combat.Targeting
         public void ShowIndicator()
         {
             TargetIndicator.gameObject.SetActive(true);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, DetectionRange);
         }
     }
 }
