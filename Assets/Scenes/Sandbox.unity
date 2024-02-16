@@ -6606,18 +6606,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 41428454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &745566089 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2433106685745082151, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-    type: 3}
-  m_PrefabInstance: {fileID: 1436203646218556460}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef46535994f07554e929e141d307ca69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &752970811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17146,20 +17134,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
-      propertyPath: <Targeter>k__BackingField
-      value: 
-      objectReference: {fileID: 745566089}
-    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
       propertyPath: <CurrentWeapon>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
         type: 2}
-    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: <TargetingMovementSpeed>k__BackingField
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 7135805136308370143, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
       propertyPath: m_Name

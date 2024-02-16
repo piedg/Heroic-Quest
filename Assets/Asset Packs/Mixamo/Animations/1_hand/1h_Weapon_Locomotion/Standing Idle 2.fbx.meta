@@ -15,11 +15,18 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'UpperLeg_L'
+      : position error = 10894.751953 mm\n\t'LowerLeg_L' : position error = 39365.152344
+      mm\n\t'Ankle_L' : position error = 37177.980469 mm\n\t'Ball_L' : position error
+      = 11124.125000 mm\n"
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Spine_03' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -33,7 +40,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 1h_Weapon_Idle
+      name: 1h_Weapon_Idle_2
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

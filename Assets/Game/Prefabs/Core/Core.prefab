@@ -1296,11 +1296,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 6979050166341232285, guid: 966cee1d4eb0c9b44aaeafaf22520471,
-        type: 3}
-      propertyPath: <TargetingMovementSpeed>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7742121899579575838, guid: 966cee1d4eb0c9b44aaeafaf22520471,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27f4e011192321f458c7643e993e9faa
+guid: 9821bf64f0dd23f4bb2bc48d016f22ce
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -15,7 +15,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'UpperLeg_L'
@@ -40,11 +40,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Attack_Downward
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 58
+      lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 253fd28e57c29fa48a53a114979edf21
+guid: 96bee861ebee6e3408bd85c33d5e8ec0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -15,7 +15,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: Root
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'UpperLeg_L'
@@ -31,7 +31,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -40,11 +40,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 1h_Weapon_Walk_Backwards
+      name: 1h_Weapon_Walk_Forward_2
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 33
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

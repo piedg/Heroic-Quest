@@ -1293,9 +1293,9 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
   <InteractionDetector>k__BackingField: {fileID: 0}
-  <Targeter>k__BackingField: {fileID: 0}
+  <Targeter>k__BackingField: {fileID: 598298792710621425}
   <MovementSpeed>k__BackingField: 4.197
-  <TargetingMovementSpeed>k__BackingField: 0
+  <TargetingMovementSpeed>k__BackingField: 1.2
   <RotationSpeed>k__BackingField: 10
   <RollForce>k__BackingField: 3.781
   <RollDuration>k__BackingField: 1.05
