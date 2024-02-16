@@ -5,6 +5,7 @@ using HeroicQuest.Data;
 using HeroicQuest.Gameplay.Interaction;
 using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Combat.Attack;
+using HeroicQuest.Gameplay.Stats;
 
 namespace HeroicQuest.StateMachine.Player
 {
@@ -14,6 +15,7 @@ namespace HeroicQuest.StateMachine.Player
     [RequireComponent(typeof(ForceReceiver))]
     [RequireComponent(typeof(InteractionDetector))]
     [RequireComponent(typeof(TargetingSystem))]
+    [RequireComponent(typeof(Health))]
     public class PlayerStateMachine : StateMachine
     {
         [field: Header("Components")]
@@ -23,6 +25,7 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public InteractionDetector InteractionDetector { get; private set; }
         [field: SerializeField] public TargetingSystem Targeter { get; private set; }
+        [field: SerializeField] public Health Health { get; private set; }
 
         [field: Header("Movement Settings")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
@@ -47,7 +50,8 @@ namespace HeroicQuest.StateMachine.Player
             Animator = GetComponent<Animator>();
             ForceReceiver = GetComponent<ForceReceiver>();
             InteractionDetector = GetComponent<InteractionDetector>();
-            Targeter = GetComponentInChildren<TargetingSystem>();
+            Targeter = GetComponent<TargetingSystem>();
+            Health = GetComponent<Health>();
         }
 
         private void Start()

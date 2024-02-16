@@ -207,6 +207,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -9020456860416635000}
     m_Position: {x: 350, y: -30, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2858402176304330785}
+    m_Position: {x: 560, y: -30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -384,6 +387,33 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: ce17781955d25c647922801319f24e9e, type: 3}
   m_Tag: Attack
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &2858402176304330785
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hit
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 4bf765fd5d89d344fa39fb77dea0b1f3,
+    type: 3}
+  m_Tag: Hit
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

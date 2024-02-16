@@ -31,7 +31,7 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.PrevTargetEvent += OnPrevTarget;
             stateMachine.InputManager.RollEvent += OnRoll;
 
-            //stateMachine.Health.OnTakeDamage += HandleTakeDamage;
+            stateMachine.Health.OnTakeDamage += OnTakeDamage;
 
             stateMachine.Animator.CrossFadeInFixedTime(targetingBlendTreeHash, crossFadeDuration);
         }
@@ -68,7 +68,7 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.NextTargetEvent -= OnNextTarget;
             stateMachine.InputManager.PrevTargetEvent -= OnPrevTarget;
             stateMachine.InputManager.RollEvent -= OnRoll;
-            // stateMachine.Health.OnTakeDamage -= HandleTakeDamage;
+            stateMachine.Health.OnTakeDamage -= OnTakeDamage;
         }
 
         void ConvertDirection(Vector3 direction)

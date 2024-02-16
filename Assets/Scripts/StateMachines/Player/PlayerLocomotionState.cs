@@ -23,6 +23,7 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.BlockEvent += OnBlock;
             stateMachine.InputManager.TargetEvent += OnTarget;
             stateMachine.InputManager.InteractEvent += OnInteract;
+            stateMachine.Health.OnTakeDamage += OnTakeDamage;
         }
 
         public override void Update(float deltaTime)
@@ -54,26 +55,12 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.BlockEvent -= OnBlock;
             stateMachine.InputManager.TargetEvent -= OnTarget;
             stateMachine.InputManager.InteractEvent -= OnInteract;
+            stateMachine.Health.OnTakeDamage -= OnTakeDamage;
         }
 
-        void OnRoll()
+        protected void OnRoll()
         {
             stateMachine.SwitchState(new PlayerRollState(stateMachine, movement));
-        }
-
-        void OnBlock()
-        {
-            if (stateMachine.CurrentWeapon.IsUnarmed()) return;
-
-            stateMachine.SwitchState(new PlayerBlockState(stateMachine));
-        }
-
-        void OnInteract()
-        {
-            if (stateMachine.InteractionDetector.CurrentTarget == null) { return; }
-
-            stateMachine.InteractionDetector.CurrentTarget.Interact();
-            stateMachine.SwitchState(new PlayerInteractState(stateMachine));
         }
 
         void OnAttack()

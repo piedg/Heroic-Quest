@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using HeroicQuest.CustomPhysics;
+using HeroicQuest.Gameplay.Stats;
 
 namespace HeroicQuest.Gameplay.Combat.Attack
 {
@@ -26,11 +27,11 @@ namespace HeroicQuest.Gameplay.Combat.Attack
 
             alreadyCollidedWith.Add(other);
 
-            /*     if (other.TryGetComponent<Health>(out Health health))
-                 {
-                     health.DealDamage(damage);
-                     RemoveColliders();
-                 }*/
+            if (other.TryGetComponent(out Health health))
+            {
+                health.DealDamage(damage);
+                RemoveColliders();
+            }
 
             if (other.TryGetComponent(out ForceReceiver forceReceiver))
             {

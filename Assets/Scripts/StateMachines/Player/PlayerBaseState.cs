@@ -24,5 +24,26 @@ namespace HeroicQuest.StateMachine.Player
                 return;
             }
         }
+
+
+        protected void OnBlock()
+        {
+            if (stateMachine.CurrentWeapon.IsUnarmed()) return;
+
+            stateMachine.SwitchState(new PlayerBlockState(stateMachine));
+        }
+
+        protected void OnInteract()
+        {
+            if (stateMachine.InteractionDetector.CurrentTarget == null) { return; }
+
+            stateMachine.InteractionDetector.CurrentTarget.Interact();
+            stateMachine.SwitchState(new PlayerInteractState(stateMachine));
+        }
+
+        protected void OnTakeDamage()
+        {
+            stateMachine.SwitchState(new PlayerHitState(stateMachine));
+        }
     }
 }
