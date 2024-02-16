@@ -41,15 +41,6 @@ namespace HeroicQuest.StateMachine.Player
         {
             movement = CalculateMovement();
 
-
-            if (stateMachine.Targeter.CurrentTarget.TryGetComponent(out Health enemy))
-            {
-                if (enemy.IsDead)
-                {
-                    NextTarget();
-                    return;
-                }
-            }
             if (stateMachine.InputManager.IsAttacking)
             {
                 stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
@@ -60,6 +51,15 @@ namespace HeroicQuest.StateMachine.Player
             {
                 stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
                 return;
+            }
+
+            if (stateMachine.Targeter.CurrentTarget.TryGetComponent(out Health enemy))
+            {
+                if (enemy.IsDead)
+                {
+                    NextTarget();
+                    return;
+                }
             }
 
             movement.Normalize();

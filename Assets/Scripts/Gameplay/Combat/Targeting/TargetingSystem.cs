@@ -33,7 +33,7 @@ namespace HeroicQuest.Gameplay.Combat.Targeting
             if (currentTarget)
             {
                 TargetIndicator.gameObject.SetActive(true);
-                TargetIndicator.position = currentTarget.position;
+                TargetIndicator.position = currentTarget.position + new Vector3(0, 2f, 0f);
             }
             else
             {
@@ -61,12 +61,13 @@ namespace HeroicQuest.Gameplay.Combat.Targeting
             for (int i = 0; i < colliders.Length; i++)
             {
                 Collider collider = colliders[i];
-                currentIndex = i;
+
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
 
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
+                    currentIndex = i;
                     closestEnemy = collider.transform;
                 }
             }
