@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using HeroicQuest.CustomPhysics;
 using HeroicQuest.Gameplay.Stats;
@@ -31,7 +30,7 @@ namespace HeroicQuest.Gameplay.Combat.Attack
             if (other.TryGetComponent(out Health health))
             {
                 health.DealDamage(damage);
-                StartCoroutine(RemoveCollidersCO());
+                StartCoroutine(RemoveCollidersCO(health.InvulnerabilityTime));
             }
 
             if (other.TryGetComponent(out ForceReceiver forceReceiver))
@@ -69,15 +68,9 @@ namespace HeroicQuest.Gameplay.Combat.Attack
             }
         }
 
-        async void RemoveColliders()
+        private IEnumerator RemoveCollidersCO(float invulnerabilityTime)
         {
-            await Task.Delay(250);
-            alreadyCollidedWith.Clear();
-        }
-
-        private IEnumerator RemoveCollidersCO()
-        {
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(invulnerabilityTime);
             alreadyCollidedWith.Clear();
         }
     }

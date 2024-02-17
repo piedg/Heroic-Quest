@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 161706286213237378}
   - component: {fileID: 8400850969521652373}
   - component: {fileID: 640114582395149142}
-  - component: {fileID: 7057566140853515394}
   - component: {fileID: 3294526513709450210}
   - component: {fileID: 6144711316152801708}
   - component: {fileID: 2872779609524134879}
@@ -101,18 +100,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7057566140853515394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943306281258267165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3d1b4ebbce2a34d90bc2f635b314e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &3294526513709450210
 Animator:
   serializedVersion: 5
@@ -146,12 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764863eeeb742ab4587329f10f6c7418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <EnemySO>k__BackingField: {fileID: 0}
   <Animator>k__BackingField: {fileID: 0}
   <Controller>k__BackingField: {fileID: 0}
   <Health>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
   <Agent>k__BackingField: {fileID: 0}
-  <Target>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 0
   <PlayerChasingRange>k__BackingField: 0

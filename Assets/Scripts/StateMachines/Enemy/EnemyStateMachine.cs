@@ -3,7 +3,6 @@ using HeroicQuest.Data;
 using HeroicQuest.Gameplay.Combat.Attack;
 using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Stats;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,10 +12,12 @@ namespace HeroicQuest.StateMachine.Enemy
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(ForceReceiver))]
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(Target))]
     [RequireComponent(typeof(Health))]
     public class EnemyStateMachine : StateMachine
     {
+        [field: Header("Enemy Settings")]
+        [field: SerializeField] public EnemySO EnemySO { get; private set; }
+        [field: Header("Components")]
         [field: SerializeField] public Animator Animator { get; private set; }
         [field: SerializeField] public CharacterController Controller { get; private set; }
         [field: SerializeField] public Health Health { get; private set; }
@@ -25,7 +26,6 @@ namespace HeroicQuest.StateMachine.Enemy
         // [field: SerializeField] public CooldownManager CooldownManager { get; private set; }
         // [field: SerializeField] public ParticleFXManager ParticleFXManager { get; private set; }
         // [field: SerializeField] public EnemyPresenter EnemyPresenter { get; private set; }
-        [field: SerializeField] public Target Target { get; private set; }
         [field: Header("Movement")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
         [field: SerializeField] public float RotationSpeed { get; private set; }
@@ -59,8 +59,10 @@ namespace HeroicQuest.StateMachine.Enemy
             Controller = GetComponent<CharacterController>();
             ForceReceiver = GetComponent<ForceReceiver>();
             Agent = GetComponent<NavMeshAgent>();
-            Target = GetComponent<Target>();
             Health = GetComponent<Health>();
+
+            EnemySO.SpawnModel(gameObject.transform);
+            Animator.Rebind(); // After spawning the character prefab it can be animated
 
             Health.OnDie += OnDie;
         }
@@ -79,7 +81,5 @@ namespace HeroicQuest.StateMachine.Enemy
         {
             SwitchState(new EnemyDeadState(this));
         }
-
-     
     }
 }

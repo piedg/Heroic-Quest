@@ -5,7 +5,9 @@ namespace HeroicQuest.Gameplay.Stats
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] int MaxHealth = 100;
+        [SerializeField] int maxHealth = 100;
+        [SerializeField] float invulnerabilityTime = 0.25f;
+        public float InvulnerabilityTime => invulnerabilityTime;
 
         private int currentHealth;
         public bool IsDead => currentHealth == 0;
@@ -15,7 +17,7 @@ namespace HeroicQuest.Gameplay.Stats
 
         private void Start()
         {
-            currentHealth = MaxHealth;
+            currentHealth = maxHealth;
         }
 
         public void DealDamage(int damage)
@@ -37,7 +39,7 @@ namespace HeroicQuest.Gameplay.Stats
 
         public void RestoreLife()
         {
-            currentHealth = MaxHealth;
+            currentHealth = maxHealth;
         }
     }
 }

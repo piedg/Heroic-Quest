@@ -1,8 +1,7 @@
 using UnityEngine;
 using HeroicQuest.Gameplay.Stats;
-using HeroicQuest.StateMachine.Enemy;
 using HeroicQuest.StateMachine.Player;
-using HeroicQuest.StateMachine;
+
 
 namespace HeroicQuest.StateMachine.Enemy
 {
