@@ -17,15 +17,13 @@ namespace HeroicQuest.StateMachine.Player
         public override void Update(float deltaTime)
         {
             //Move(deltaTime);
-
-            if (GetNormalizedTime(stateMachine.Animator, "Hit") >= 1)
+            float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Hit");
+            if (normalizedTime >= 1)
             {
                 ReturnToLocomotion();
             }
         }
 
-        public override void Exit()
-        {
-        }
+        public override void Exit() { }
     }
 }

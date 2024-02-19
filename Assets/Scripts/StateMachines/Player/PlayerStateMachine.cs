@@ -40,6 +40,15 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
 
+        public void SetCurrentWeapon(WeaponSO currentWeapon)
+        {
+            CurrentWeapon = currentWeapon;
+        }
+        public void FindWeaponLogic()
+        {
+            WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
+        }
+
         public Transform MainCameraTransform { get; private set; }
 
         private void Awake()
@@ -67,11 +76,11 @@ namespace HeroicQuest.StateMachine.Player
             if (CurrentWeapon)
             {
                 CurrentWeapon.Equip(RightHandHolder, Animator);
-            }
 
-            if (RightHandHolder)
-            {
-                WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
+                if (RightHandHolder)
+                {
+                    WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
+                }
             }
         }
 

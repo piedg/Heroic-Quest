@@ -1,5 +1,5 @@
-using UnityEngine;
 using HeroicQuest.Gameplay.Combat.Attack;
+using UnityEngine;
 
 namespace HeroicQuest.Data
 {
@@ -24,6 +24,8 @@ namespace HeroicQuest.Data
         {
             if (itemPrefab)
             {
+                DestroyAlreadyEquippedWeapon(handHolder);
+
                 Instantiate(itemPrefab, handHolder);
                 UpdateAnimator(animator);
             }
@@ -45,6 +47,21 @@ namespace HeroicQuest.Data
             else if (overrideController)
             {
                 animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+        }
+
+        public void DestroyAlreadyEquippedWeapon(Transform handHolder)
+        {
+            // check if there is a weapon already instantiated, then destroy it
+            foreach (Transform children in handHolder)
+            {
+                if (children.TryGetComponent(out WeaponLogic weaponLogic))
+                {
+                    if (weaponLogic != null)
+                    {
+                        Destroy(children.gameObject);
+                    }
+                }
             }
         }
     }

@@ -1,8 +1,10 @@
+using HeroicQuest.Data;
 using HeroicQuest.Gameplay.Interaction;
 using UnityEngine;
 
 public class PickuppableItem : MonoBehaviour, IInteractable
 {
+    [SerializeField] WeaponSO weapon;
     public bool IsInteractable => isInteractable;
     private bool isInteractable = true;
 
@@ -30,5 +32,10 @@ public class PickuppableItem : MonoBehaviour, IInteractable
         if (!isInteractable) return;
 
         Debug.Log("OnEndHover");
+    }
+
+    public WeaponSO GetWeapon()
+    {
+        return weapon;
     }
 }

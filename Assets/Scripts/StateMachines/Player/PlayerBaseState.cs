@@ -37,7 +37,6 @@ namespace HeroicQuest.StateMachine.Player
         {
             if (stateMachine.InteractionDetector.CurrentTarget == null) { return; }
 
-            stateMachine.InteractionDetector.CurrentTarget.Interact();
             stateMachine.SwitchState(new PlayerInteractState(stateMachine));
         }
 

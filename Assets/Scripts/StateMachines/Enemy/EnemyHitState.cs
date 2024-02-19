@@ -12,23 +12,17 @@ namespace HeroicQuest.StateMachine.Enemy
             stateMachine.Animator.CrossFadeInFixedTime(HitHash, CrossFadeduration);
         }
 
-        public override void Enter()
-        {
-
-        }
+        public override void Enter() { }
 
         public override void Update(float deltaTime)
         {
-            if (GetNormalizedTime(stateMachine.Animator, "Hit") >= 1)
+            float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Hit");
+            if (normalizedTime >= 1)
             {
                 stateMachine.SwitchState(new EnemyIdleState(stateMachine));
             }
         }
 
-        public override void Exit()
-        {
-        }
-
-
+        public override void Exit() { }
     }
 }
