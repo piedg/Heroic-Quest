@@ -50,19 +50,28 @@ namespace HeroicQuest.StateMachine.Enemy
 
         // [field: SerializeField] public int AttackDamage { get; private set; }
         // [field: SerializeField] public float AttackKnockback { get; private set; }
-        [field: SerializeField] public GameObject RightHandHolder { get; private set; }
+        [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public float StunDuration { get; private set; }
+
+        [field: SerializeField] public GameObject Player { get; private set; }
 
         private void Awake()
         {
             Animator = GetComponent<Animator>();
             Controller = GetComponent<CharacterController>();
             ForceReceiver = GetComponent<ForceReceiver>();
-            Agent = GetComponent<NavMeshAgent>();
             Health = GetComponent<Health>();
+            Agent = GetComponent<NavMeshAgent>();
+
+            Player = GameObject.Find("Player");
 
             EnemySO.SpawnModel(gameObject.transform);
             Animator.Rebind(); // After spawning the character prefab it can be animated
+            transform
+            RightHandHolder = transform.GetChild(0).Find("Root/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R");
+            EnemySO.WeaponSO.Equip(RightHandHolder, Animator);
+            WeaponLogic = RightHandHolder.GetComponentInChildren<WeaponLogic>();
+
 
             Health.OnDie += OnDie;
         }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Viking
   m_EditorClassIdentifier: 
   Model: {fileID: 4383542637540503636, guid: c2c7a5d55886d6843ab44bbd8e85edb2, type: 3}
+  weaponSO: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430, type: 2}

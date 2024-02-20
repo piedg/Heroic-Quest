@@ -23,6 +23,15 @@ namespace HeroicQuest.StateMachine.Enemy
         {
             Move(deltaTime);
 
+            if (IsInChaseRange())
+            {
+                if (IsInViewRange() || IsTooNearRange())
+                {
+                    stateMachine.SwitchState(new EnemyChaseState(stateMachine));
+                    return;
+                }
+            }
+
             stateMachine.Animator.SetFloat(SpeedHash, 0f, animatorDumpTime, deltaTime);
         }
 

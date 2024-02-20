@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Skeleton Slave
   m_EditorClassIdentifier: 
   Model: {fileID: 7288717666987325729, guid: 09390bf9e6170894a931e4255d6b8339, type: 3}
+  weaponSO: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430, type: 2}

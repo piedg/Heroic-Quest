@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56662a1e6f843ba4a81c37c11e796eae, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  Model: {fileID: 2427806780345374678, guid: 392e08def1dac1246b8e240a8539b9db, type: 3}
+  Model: {fileID: 433744201667753512, guid: ab0236a324bebb446bd0ab34bca6338c, type: 3}
+  weaponSO: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430, type: 2}

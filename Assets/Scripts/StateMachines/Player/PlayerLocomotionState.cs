@@ -40,13 +40,8 @@ namespace HeroicQuest.StateMachine.Player
                 return;
             }
 
-            UpdateAnimator(deltaTime);
-            FaceMovementDirection(movement, deltaTime);
-        }
-
-        private void UpdateAnimator(float deltaTime)
-        {
             stateMachine.Animator.SetFloat(speedParamHash, stateMachine.Controller.velocity.magnitude, animatorDampTime, deltaTime);
+            FaceMovementDirection(movement, deltaTime);
         }
 
         public override void Exit()

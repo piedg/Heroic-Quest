@@ -30,7 +30,7 @@ namespace HeroicQuest.StateMachine.Enemy
 
             if (stateMachine.Agent.isOnNavMesh)
             {
-                //  stateMachine.Agent.destination = stateMachine.Player.transform.position;
+                stateMachine.Agent.destination = stateMachine.Player.transform.position;
 
                 Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
             }
@@ -60,9 +60,9 @@ namespace HeroicQuest.StateMachine.Enemy
 
         protected void FaceToPlayer(float deltaTime)
         {
-            /*   if (stateMachine.Player == null) { return; }
+            if (stateMachine.Player == null) { return; }
 
-               SmoothRotation(stateMachine.Player.transform.position, deltaTime); */
+            SmoothRotation(stateMachine.Player.transform.position, deltaTime);
         }
 
         protected void FaceTo(Vector3 position, float deltaTime)
@@ -89,17 +89,18 @@ namespace HeroicQuest.StateMachine.Enemy
                 stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.RotationSpeed * deltaTime);
             }
         }
+
         protected bool IsInAttackRange()
         {
-            /* if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
+            if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
 
-             return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.AttackRange);*/
+            return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.AttackRange);
             return false;
         }
 
         protected bool IsInViewRange()
         {
-            /*Vector3 disToPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
+            Vector3 disToPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
 
             Vector3 localDirection = stateMachine.transform.InverseTransformDirection(disToPlayer);
 
@@ -113,29 +114,29 @@ namespace HeroicQuest.StateMachine.Enemy
             {
                 if (Physics.Raycast(stateMachine.transform.position + (Vector3.up / 2), disToPlayer + Vector3.up, out hit, Mathf.Infinity))
                 {
-                    if (hit.collider.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine Player))
+                    if (hit.collider.TryGetComponent(out PlayerStateMachine Player))
                     {
                         return Player != null;
                     }
                 }
-            }*/
+            }
             return false;
         }
 
-        /*  protected bool IsInChaseRange()
-          {
-              if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
+        protected bool IsInChaseRange()
+        {
+            if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
 
-              return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerChasingRange);
-          }
+            return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerChasingRange);
+        }
 
-          protected bool IsTooNearRange()
-          {
-              if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
+        protected bool IsTooNearRange()
+        {
+            if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
 
-              return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerToNearChasingRange);
-          }
-        */
+            return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerToNearChasingRange);
+        }
+
         protected void ResetAgentPath()
         {
             Move(0); // Avoid NavAgent Path error
