@@ -33,6 +33,7 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public float RotationSpeed { get; private set; }
         [field: SerializeField] public float RollForce { get; private set; }
         [field: SerializeField] public float RollDuration { get; private set; }
+        [field: SerializeField] public float RollAnimSpeed { get; private set; }
 
         [field: Header("Attacking Settings")]
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }

@@ -4,8 +4,8 @@ namespace HeroicQuest.StateMachine.Player
 {
     public class PlayerRollState : PlayerMovementState
     {
-        private readonly int dashBlendTreeHash = Animator.StringToHash("Roll");
-
+        private readonly int rollBlendTreeHash = Animator.StringToHash("Roll");
+        private const string RollSpeed = "RollSpeed";
         private const float crossFadeDuration = 0.3f;
 
         Vector3 direction;
@@ -18,7 +18,8 @@ namespace HeroicQuest.StateMachine.Player
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(dashBlendTreeHash, crossFadeDuration);
+            stateMachine.Animator.SetFloat(RollSpeed, stateMachine.RollAnimSpeed);
+            stateMachine.Animator.CrossFadeInFixedTime(rollBlendTreeHash, crossFadeDuration);
             remainingRollTime = stateMachine.RollDuration;
 
             //AudioManager.Instance.PlayRandomClip(stateMachine.AudioClips.Roll);

@@ -67,11 +67,9 @@ namespace HeroicQuest.StateMachine.Enemy
 
             EnemySO.SpawnModel(gameObject.transform);
             Animator.Rebind(); // After spawning the character prefab it can be animated
-            transform
-            RightHandHolder = transform.GetChild(0).Find("Root/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R");
+            RightHandHolder = transform.GetChild(0).Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R");
             EnemySO.WeaponSO.Equip(RightHandHolder, Animator);
             WeaponLogic = RightHandHolder.GetComponentInChildren<WeaponLogic>();
-
 
             Health.OnDie += OnDie;
         }
@@ -89,6 +87,31 @@ namespace HeroicQuest.StateMachine.Enemy
         private void OnDie()
         {
             SwitchState(new EnemyDeadState(this));
+        }
+
+        //Animations Events
+        void OnStartAttackAnim()
+        {
+            WeaponLogic.GetComponent<CapsuleCollider>().enabled = true;
+        }
+
+        void Hit()
+        {
+        }
+
+        void OnEndAttackAnim()
+        {
+            WeaponLogic.GetComponent<CapsuleCollider>().enabled = false;
+        }
+
+        void FootR()
+        {
+
+        }
+
+        void FootL()
+        {
+
         }
     }
 }
