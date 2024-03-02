@@ -1,7 +1,7 @@
 using HeroicQuest.CustomPhysics;
 using HeroicQuest.Data;
+using HeroicQuest.Gameplay.AI;
 using HeroicQuest.Gameplay.Combat.Attack;
-using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Stats;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,18 +26,21 @@ namespace HeroicQuest.StateMachine.Enemy
         // [field: SerializeField] public CooldownManager CooldownManager { get; private set; }
         // [field: SerializeField] public ParticleFXManager ParticleFXManager { get; private set; }
         // [field: SerializeField] public EnemyPresenter EnemyPresenter { get; private set; }
+
         [field: Header("Movement")]
         [field: SerializeField] public float MovementSpeed { get; private set; }
+        [field: SerializeField] public float WalkingSpeed { get; private set; }
         [field: SerializeField] public float RotationSpeed { get; private set; }
 
         [field: Header("Chasing And Patrolling")]
         [field: SerializeField] public float PlayerChasingRange { get; private set; }
-        [field: SerializeField] public float PlayerToNearChasingRange { get; private set; }
+        [field: SerializeField] public float PlayerNearChasingRange { get; private set; }
         [field: SerializeField] public float ViewAngle { get; private set; }
         [field: SerializeField] public float SuspicionTime { get; private set; }
         [field: SerializeField] public float DwellTime { get; private set; }
-        // [field: SerializeField] public PatrolPath PatrolPath { get; private set; }
-        [field: SerializeField] public LayerMask PlayerLayerMask { get; private set; }
+        [field: SerializeField] public PatrolPath PatrolPath { get; private set; }
+        public int LastWaypointIndex { get; set; }
+
         [field: Header("Attack")]
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
@@ -81,7 +84,21 @@ namespace HeroicQuest.StateMachine.Enemy
 
         private void Start()
         {
-            SwitchState(new EnemyIdleState(this));
+            GoToGuardPosition();
+        }
+
+        public void GoToGuardPosition()
+        {
+            if (PatrolPath != null)
+            {
+                SwitchState(new EnemyPatrolState(this));
+                return;
+            }
+            else
+            {
+                SwitchState(new EnemyIdleState(this));
+                return;
+            }
         }
 
         private void OnDie()
@@ -112,6 +129,15 @@ namespace HeroicQuest.StateMachine.Enemy
         void FootL()
         {
 
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, PlayerNearChasingRange);
         }
     }
 }

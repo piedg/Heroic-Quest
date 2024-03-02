@@ -2,7 +2,6 @@ using UnityEngine;
 using HeroicQuest.Gameplay.Stats;
 using HeroicQuest.StateMachine.Player;
 
-
 namespace HeroicQuest.StateMachine.Enemy
 {
     public abstract class EnemyBaseState : State
@@ -14,37 +13,23 @@ namespace HeroicQuest.StateMachine.Enemy
             this.stateMachine = stateMachine;
         }
 
+        /// <summary>
+        /// Add a movement to the CharacterController
+        /// </summary>
+        private void Move(Vector3 motion, float deltaTime)
+        {
+            stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
+        }
+
+        /// <summary>
+        /// The Character doesn't move
+        /// </summary>
         protected void Move(float deltaTime)
         {
             Move(Vector3.zero, deltaTime);
         }
 
-        protected void Move(Vector3 motion, float deltaTime)
-        {
-            stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
-        }
-
-        protected void MoveToPlayer(float deltaTime)
-        {
-            Move(deltaTime);
-
-            if (stateMachine.Agent.isOnNavMesh)
-            {
-                stateMachine.Agent.destination = stateMachine.Player.transform.position;
-
-                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
-            }
-
-            stateMachine.Agent.velocity = stateMachine.Controller.velocity;
-        }
-
-
-        protected void MoveTo(Vector3 position, float deltaTime)
-        {
-            AgentMoveTo(position, deltaTime);
-        }
-
-        private void AgentMoveTo(Vector3 position, float deltaTime)
+        private void AgentMoveTo(Vector3 position, float speed, float deltaTime)
         {
             Move(deltaTime);
 
@@ -52,22 +37,26 @@ namespace HeroicQuest.StateMachine.Enemy
             {
                 stateMachine.Agent.destination = position;
 
-                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+                Move(stateMachine.Agent.desiredVelocity.normalized * speed, deltaTime);
             }
 
             stateMachine.Agent.velocity = stateMachine.Controller.velocity;
         }
 
-        protected void FaceToPlayer(float deltaTime)
+        /// <summary>
+        /// Move the Agent to the Player
+        /// </summary>
+        protected void MoveToPlayer(float deltaTime)
         {
-            if (stateMachine.Player == null) { return; }
-
-            SmoothRotation(stateMachine.Player.transform.position, deltaTime);
+            AgentMoveTo(stateMachine.Player.transform.position, stateMachine.MovementSpeed, deltaTime);
         }
 
-        protected void FaceTo(Vector3 position, float deltaTime)
+        /// <summary>
+        /// Move the Character to a specific position
+        /// </summary>
+        protected void MoveTo(Vector3 position, float speed, float deltaTime)
         {
-            SmoothRotation(position, deltaTime);
+            AgentMoveTo(position, speed, deltaTime);
         }
 
         private void SmoothRotation(Vector3 target, float deltaTime)
@@ -77,7 +66,28 @@ namespace HeroicQuest.StateMachine.Enemy
 
             var targetRotation = Quaternion.LookRotation(lookPos);
 
-            stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, targetRotation, stateMachine.RotationSpeed * deltaTime);
+            stateMachine.transform.rotation = Quaternion.Slerp(
+                stateMachine.transform.rotation,
+                targetRotation,
+                stateMachine.RotationSpeed * deltaTime);
+        }
+
+        /// <summary>
+        /// Rotate the Character smoothly to the Player
+        /// </summary>
+        protected void FaceToPlayer(float deltaTime)
+        {
+            if (stateMachine.Player == null) { return; }
+
+            SmoothRotation(stateMachine.Player.transform.position, deltaTime);
+        }
+
+        /// <summary>
+        /// Rotate the Character smoothly to a specific position
+        /// </summary>
+        protected void FaceTo(Vector3 position, float deltaTime)
+        {
+            SmoothRotation(position, deltaTime);
         }
 
         protected void FaceForward(float deltaTime)
@@ -95,7 +105,6 @@ namespace HeroicQuest.StateMachine.Enemy
             if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
 
             return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.AttackRange);
-            return false;
         }
 
         protected bool IsInViewRange()
@@ -104,15 +113,13 @@ namespace HeroicQuest.StateMachine.Enemy
 
             Vector3 localDirection = stateMachine.transform.InverseTransformDirection(disToPlayer);
 
-            RaycastHit hit;
-
             Debug.DrawRay(stateMachine.transform.position + Vector3.up, disToPlayer + Vector3.up, Color.red);
 
             float angle = (Mathf.Atan2(localDirection.z, localDirection.x) * Mathf.Rad2Deg) - 90f;
 
             if (angle < stateMachine.ViewAngle && angle > -stateMachine.ViewAngle)
             {
-                if (Physics.Raycast(stateMachine.transform.position + (Vector3.up / 2), disToPlayer + Vector3.up, out hit, Mathf.Infinity))
+                if (Physics.Raycast(stateMachine.transform.position + (Vector3.up / 2), disToPlayer + Vector3.up, out RaycastHit hit, Mathf.Infinity))
                 {
                     if (hit.collider.TryGetComponent(out PlayerStateMachine Player))
                     {
@@ -130,11 +137,11 @@ namespace HeroicQuest.StateMachine.Enemy
             return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerChasingRange);
         }
 
-        protected bool IsTooNearRange()
+        protected bool IsPlayerNear()
         {
             if (stateMachine.Player.GetComponent<Health>().IsDead) { return false; }
 
-            return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerToNearChasingRange);
+            return CheckDistanceSqr(stateMachine.Player.transform.position, stateMachine.transform.position, stateMachine.PlayerNearChasingRange);
         }
 
         protected void ResetAgentPath()

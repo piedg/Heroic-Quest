@@ -154,9 +154,9 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
   <Agent>k__BackingField: {fileID: 0}
-  <MovementSpeed>k__BackingField: 2.5
+  <MovementSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 3
-  <PlayerChasingRange>k__BackingField: 5
+  <PlayerChasingRange>k__BackingField: 10
   <PlayerToNearChasingRange>k__BackingField: 2.5
   <ViewAngle>k__BackingField: 80
   <SuspicionTime>k__BackingField: 0

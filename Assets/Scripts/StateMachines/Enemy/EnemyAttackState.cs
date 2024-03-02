@@ -17,7 +17,8 @@ namespace HeroicQuest.StateMachine.Enemy
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, TransitionDuration);
-            // stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentWeapon.Damage, stateMachine.CurrentWeapon.Knockbacks[0], true);
+            stateMachine.Health.OnTakeDamage += OnTakeDamage;
+            stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentWeapon.Damage, stateMachine.CurrentWeapon.Knockbacks[0], true);
         }
 
         public override void Update(float deltaTime)
@@ -25,7 +26,7 @@ namespace HeroicQuest.StateMachine.Enemy
             Move(deltaTime);
             //FaceToPlayer(deltaTime);
             float normalizedTime = GetNormalizedTime(stateMachine.Animator, "Attack");
-            if (normalizedTime > 0.5f && GetNormalizedTime(stateMachine.Animator, "Attack") < 1f)
+            if (normalizedTime > 0.5f && normalizedTime < 1f)
             {
                 TryApplyForce();
                 return;
@@ -61,6 +62,9 @@ namespace HeroicQuest.StateMachine.Enemy
             alreadyAppliedForce = true;
         }
 
-        public override void Exit() { }
+        public override void Exit()
+        {
+            stateMachine.Health.OnTakeDamage -= OnTakeDamage;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace HeroicQuest.Gameplay.Combat.Attack
 
         private List<Collider> alreadyCollidedWith = new List<Collider>();
 
+
         private void OnEnable()
         {
             alreadyCollidedWith.Clear();

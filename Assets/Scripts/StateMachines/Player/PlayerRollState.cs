@@ -6,6 +6,7 @@ namespace HeroicQuest.StateMachine.Player
     {
         private readonly int rollBlendTreeHash = Animator.StringToHash("Roll");
         private const string RollSpeed = "RollSpeed";
+
         private const float crossFadeDuration = 0.3f;
 
         Vector3 direction;
