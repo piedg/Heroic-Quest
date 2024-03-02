@@ -29,19 +29,19 @@ MonoBehaviour:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
-    <ComboAttackTime>k__BackingField: 0.6
+    <ComboAttackTime>k__BackingField: 0.75
     <Force>k__BackingField: 0
     <ForceTime>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
-    <ComboAttackTime>k__BackingField: 0.5
+    <ComboAttackTime>k__BackingField: 0.75
     <Force>k__BackingField: 2
     <ForceTime>k__BackingField: 0.25
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0.65
-    <Force>k__BackingField: 3.5
+    <Force>k__BackingField: 2
     <ForceTime>k__BackingField: 0.25
   <WeaponType>k__BackingField: 1
