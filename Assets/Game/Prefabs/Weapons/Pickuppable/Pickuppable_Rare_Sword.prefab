@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8341439885382099139
+--- !u!1 &799638740195453100
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1252624699731995600}
-  - component: {fileID: 9131160440591204006}
-  - component: {fileID: 3483386150822428046}
-  - component: {fileID: 3097510465219950124}
-  - component: {fileID: 6694710236799008803}
+  - component: {fileID: 3639560843843660708}
+  - component: {fileID: 7533766187944039291}
+  - component: {fileID: 3184252861074419168}
   m_Layer: 6
-  m_Name: Pickuppable_Rare_Sword
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1252624699731995600
+--- !u!4 &3639560843843660708
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8341439885382099139}
+  m_GameObject: {fileID: 799638740195453100}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.51663727, y: 0.48279005, z: -0.4827897, w: 0.516637}
-  m_LocalPosition: {x: 8.572, y: 0, z: 4.085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -176.121, y: -90, z: 90}
---- !u!33 &9131160440591204006
+  m_Father: {fileID: 1252624699731995600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7533766187944039291
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8341439885382099139}
+  m_GameObject: {fileID: 799638740195453100}
   m_Mesh: {fileID: 4300000, guid: b24956cf5d4cc0e44a42e03d26fa5797, type: 3}
---- !u!23 &3483386150822428046
+--- !u!23 &3184252861074419168
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8341439885382099139}
+  m_GameObject: {fileID: 799638740195453100}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,6 +83,40 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8341439885382099139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252624699731995600}
+  - component: {fileID: 3097510465219950124}
+  - component: {fileID: 6694710236799008803}
+  m_Layer: 6
+  m_Name: Pickuppable_Rare_Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252624699731995600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341439885382099139}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.51663727, y: 0.48279005, z: -0.4827897, w: 0.516637}
+  m_LocalPosition: {x: 8.572, y: 0, z: 4.085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3639560843843660708}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -176.121, y: -90, z: 90}
 --- !u!135 &3097510465219950124
 SphereCollider:
   m_ObjectHideFlags: 0

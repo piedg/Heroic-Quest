@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331801402885709215}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.66220504, y: -0.20419864, z: 0.23757797, w: 0.6806938}
-  m_LocalPosition: {x: 0.097, y: 0.052, z: 0.541}
+  m_LocalRotation: {x: -0.85562104, y: 0.0599384, z: -0.080138735, w: 0.5078365}
+  m_LocalPosition: {x: 0.062, y: 0.251, z: 0.398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -53.561, y: -86.18, z: 89.027}
+  m_LocalEulerAnglesHint: {x: -59.252, y: -202.787, z: 201.089}
 --- !u!33 &7127839926284526338
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b717b84021f2541974dbec15bd0358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerToInteract:
+  layerToInteract:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!136 &5496419051500781748
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -120,6 +120,6 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.36227173
-  m_Height: 0.72454345
+  m_Height: 1.9027504
   m_Direction: 1
-  m_Center: {x: 0.00000029802322, y: 1.5541434, z: -0.0000062584877}
+  m_Center: {x: 0.0000004827722, y: 0.96503806, z: -0.000006339408}

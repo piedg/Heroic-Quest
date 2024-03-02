@@ -18,8 +18,8 @@ MonoBehaviour:
   type: 2
   descriptionTitle: 
   description: 
-  <Damage>k__BackingField: 25
-  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: 0c9948ed775417144837039ca9d88556,
+  <Damage>k__BackingField: 1
+  <AnimatorOverride>k__BackingField: {fileID: 22100000, guid: dadcb28a21650e9448673009e25f32c5,
     type: 2}
   <Knockbacks>k__BackingField:
   - 2.5

@@ -1,6 +1,7 @@
 using UnityEngine;
 using HeroicQuest.Gameplay.Stats;
 using HeroicQuest.StateMachine.Player;
+using UnityEngine.AI;
 
 namespace HeroicQuest.StateMachine.Enemy
 {
@@ -149,7 +150,11 @@ namespace HeroicQuest.StateMachine.Enemy
             Move(0); // Avoid NavAgent Path error
 
             stateMachine.Agent.velocity = Vector3.zero;
-            stateMachine.Agent.ResetPath();
+
+            if (stateMachine.Agent.isOnNavMesh)
+            {
+                stateMachine.Agent.ResetPath();
+            }
         }
 
         protected void OnTakeDamage()
