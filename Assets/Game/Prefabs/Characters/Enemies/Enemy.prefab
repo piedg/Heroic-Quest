@@ -83,7 +83,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!114 &3088406440537844303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,15 +155,14 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 0}
   <Agent>k__BackingField: {fileID: 0}
   <MovementSpeed>k__BackingField: 5
+  <WalkingSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 3
   <PlayerChasingRange>k__BackingField: 10
-  <PlayerToNearChasingRange>k__BackingField: 2.5
+  <PlayerNearChasingRange>k__BackingField: 0
   <ViewAngle>k__BackingField: 80
   <SuspicionTime>k__BackingField: 0
   <DwellTime>k__BackingField: 0
-  <PlayerLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 0
+  <PatrolPath>k__BackingField: {fileID: 0}
   <CurrentWeapon>k__BackingField: {fileID: 0}
   <AttackRange>k__BackingField: 0
   <AttackRate>k__BackingField: 0

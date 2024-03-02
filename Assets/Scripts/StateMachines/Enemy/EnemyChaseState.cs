@@ -22,9 +22,9 @@ namespace HeroicQuest.StateMachine.Enemy
 
         public override void Update(float deltaTime)
         {
-            if (!IsInChaseRange())
+            if (!IsInChaseRange() && !IsInViewRange())
             {
-                //   stateMachine.SwitchState(new EnemySuspicionState(stateMachine));
+                stateMachine.SwitchState(new EnemySuspicionState(stateMachine));
                 return;
             }
             else if (IsInAttackRange())

@@ -7,7 +7,7 @@ namespace HeroicQuest.StateMachine.Player
         private readonly int locomotionBlendTreeHash = Animator.StringToHash("Locomotion");
         private readonly int speedParamHash = Animator.StringToHash("Speed");
 
-        private const float animatorDampTime = 0.1f;
+        private const float animatorDampTime = 0.25f;
         private const float crossFadeDuration = 0.25f;
 
         Vector3 movement;

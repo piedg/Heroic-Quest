@@ -24,14 +24,14 @@ public class PickuppableItem : MonoBehaviour, IInteractable
     {
         if (!isInteractable) return;
 
-        Debug.Log("OnStartHover");
+        //  Debug.Log("OnStartHover");
     }
 
     public void EndHover()
     {
         if (!isInteractable) return;
 
-        Debug.Log("OnEndHover");
+        // Debug.Log("OnEndHover");
     }
 
     public WeaponSO GetWeapon()

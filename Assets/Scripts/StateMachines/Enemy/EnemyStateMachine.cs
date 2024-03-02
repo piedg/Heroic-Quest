@@ -24,7 +24,6 @@ namespace HeroicQuest.StateMachine.Enemy
         [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
         [field: SerializeField] public NavMeshAgent Agent { get; private set; }
         // [field: SerializeField] public CooldownManager CooldownManager { get; private set; }
-        // [field: SerializeField] public ParticleFXManager ParticleFXManager { get; private set; }
         // [field: SerializeField] public EnemyPresenter EnemyPresenter { get; private set; }
 
         [field: Header("Movement")]
@@ -40,22 +39,22 @@ namespace HeroicQuest.StateMachine.Enemy
         [field: SerializeField] public float DwellTime { get; private set; }
         [field: SerializeField] public PatrolPath PatrolPath { get; private set; }
         public int LastWaypointIndex { get; set; }
+        public Vector3 InitialPosition { get; set; }
 
         [field: Header("Attack")]
         [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
         [field: SerializeField] public float AttackRate { get; private set; }
         [field: SerializeField] public float AttackForce { get; private set; }
-        //  [field: SerializeField] public Transform SlashVFX { get; private set; }
         public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform ProjectileObj { get; private set; }
         [field: SerializeField] public bool IsRanged { get; private set; }
 
         // [field: SerializeField] public int AttackDamage { get; private set; }
         // [field: SerializeField] public float AttackKnockback { get; private set; }
-        [field: SerializeField] public Transform RightHandHolder { get; private set; }
-        [field: SerializeField] public float StunDuration { get; private set; }
 
+        [field: Header("References")]
+        [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public GameObject Player { get; private set; }
 
         private void Awake()

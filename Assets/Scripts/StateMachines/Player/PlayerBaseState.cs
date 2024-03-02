@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace HeroicQuest.StateMachine.Player
 {
     public abstract class PlayerBaseState : State
