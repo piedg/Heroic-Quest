@@ -8,9 +8,7 @@ namespace HeroicQuest.StateMachine.Enemy
         private const float CrossFadeduration = 0.1f;
         float disableEnemyDelay = 5f;
 
-        public EnemyDeadState(EnemyStateMachine stateMachine) : base(stateMachine)
-        {
-        }
+        public EnemyDeadState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
@@ -22,12 +20,9 @@ namespace HeroicQuest.StateMachine.Enemy
 
         public override void Update(float deltaTime)
         {
+        
         }
 
-        public override void Exit()
-        {
-        }
-
-
+        public override void Exit() { }
     }
 }

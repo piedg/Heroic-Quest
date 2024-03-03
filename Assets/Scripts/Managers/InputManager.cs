@@ -30,7 +30,7 @@ namespace HeroicQuest.Managers
 
         private void OnDestroy()
         {
-            controls.Player.Disable();
+            //controls.Player.Disable();
         }
 
         public void OnMove(InputAction.CallbackContext context)

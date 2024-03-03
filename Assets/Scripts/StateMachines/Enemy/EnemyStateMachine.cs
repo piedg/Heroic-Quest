@@ -83,7 +83,14 @@ namespace HeroicQuest.StateMachine.Enemy
 
         private void Start()
         {
-            GoToGuardPosition();
+            if (Health.IsDead)
+            {
+                OnDie();
+            }
+            else
+            {
+                GoToGuardPosition();
+            }
         }
 
         public void GoToGuardPosition()

@@ -23,7 +23,7 @@ namespace HeroicQuest.StateMachine.Enemy
         }
 
         /// <summary>
-        /// The Character doesn't move
+        /// The Character doesn't move, but force can be applied
         /// </summary>
         protected void Move(float deltaTime)
         {
