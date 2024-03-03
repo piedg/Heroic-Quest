@@ -15,7 +15,7 @@ namespace HeroicQuest.StateMachine.Player
         public PlayerMeleeAttackState(PlayerStateMachine stateMachine, int attackIndex, Vector3 direction) : base(stateMachine)
         {
             this.attackIndex = attackIndex;
-            this.attack = stateMachine.CurrentWeapon.Attacks[attackIndex];
+            this.attack = stateMachine.CurrentMainWeapon.Attacks[attackIndex];
             this.direction = direction;
         }
 
@@ -25,7 +25,7 @@ namespace HeroicQuest.StateMachine.Player
 
             direction = CalculateMovement();
 
-            stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentWeapon.Damage, stateMachine.CurrentWeapon.Knockbacks[attackIndex]);
+            stateMachine.WeaponLogic.SetAttack(stateMachine.CurrentMainWeapon.Damage, stateMachine.CurrentMainWeapon.Knockbacks[attackIndex]);
 
             stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
         }

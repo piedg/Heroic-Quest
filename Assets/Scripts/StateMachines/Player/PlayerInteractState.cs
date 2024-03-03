@@ -8,19 +8,23 @@ namespace HeroicQuest.StateMachine.Player
         private readonly int interactHash = Animator.StringToHash("Interact");
         private const float crossFadeDuration = 0.1f;
 
-
         public PlayerInteractState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(interactHash, crossFadeDuration);
-            stateMachine.WeaponLogic.gameObject.SetActive(false);
+
+            stateMachine.WeaponLogic.gameObject.SetActive(false); // At least a weapon should be equipped (Default Unarmed)
 
             stateMachine.InteractionDetector.CurrentTarget.Interact();
 
             PickuppableItem item = stateMachine.InteractionDetector.CurrentTarget as PickuppableItem;
             WeaponSO newWeapon = item.GetWeapon();
-            stateMachine.SetCurrentWeapon(newWeapon);
+            stateMachine.CurrentEquipment.MainEquipment = newWeapon;
+
+            // TODO 
+            // dopo interazione aggiungere oggetti all'inventario
+            //stateMachine.SetCurrentWeapon(newWeapon);
             newWeapon.Equip(stateMachine.RightHandHolder, stateMachine.Animator);
             stateMachine.FindWeaponLogic();
         }

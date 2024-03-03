@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 6979050166341232285}
   - component: {fileID: 598298792710621425}
   - component: {fileID: 7459020568551869979}
+  - component: {fileID: 7732853801302609775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1302,11 +1303,10 @@ MonoBehaviour:
   <RollForce>k__BackingField: 5
   <RollDuration>k__BackingField: 1.05
   <RollAnimSpeed>k__BackingField: 0.9
+  <CurrentEquipment>k__BackingField: {fileID: 0}
   <WeaponLogic>k__BackingField: {fileID: 0}
   <RightHandHolder>k__BackingField: {fileID: 3066094760843531868}
   <LeftHandHolder>k__BackingField: {fileID: 0}
-  <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: b6a81d91ac2aecb4bb2ee429e5428430,
-    type: 2}
 --- !u!114 &598298792710621425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,6 +1335,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   invulnerabilityTime: 0.25
+--- !u!114 &7732853801302609775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151982542086845250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54665cd690f59bb48af44741d4943608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainEquipment: {fileID: 0}
+  secondaryEquipment: {fileID: 0}
+  items: []
 --- !u!1 &3392956121609593443
 GameObject:
   m_ObjectHideFlags: 0

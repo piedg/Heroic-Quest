@@ -6,6 +6,7 @@ using HeroicQuest.Gameplay.Interaction;
 using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Combat.Attack;
 using HeroicQuest.Gameplay.Stats;
+using HeroicQuest.Inventory;
 
 namespace HeroicQuest.StateMachine.Player
 {
@@ -16,6 +17,7 @@ namespace HeroicQuest.StateMachine.Player
     [RequireComponent(typeof(InteractionDetector))]
     [RequireComponent(typeof(TargetingSystem))]
     [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Equipment))]
     public class PlayerStateMachine : StateMachine
     {
         [field: Header("Components")]
@@ -36,20 +38,12 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public float RollAnimSpeed { get; private set; }
 
         [field: Header("Weapon Settings")]
+        [field: SerializeField] public Equipment CurrentEquipment { get; private set; }
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
-        [field: SerializeField] public WeaponSO CurrentWeapon { get; private set; }
 
-        public void SetCurrentWeapon(WeaponSO currentWeapon)
-        {
-            CurrentWeapon = currentWeapon;
-        }
-        public void FindWeaponLogic()
-        {
-            WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
-        }
-
+        public WeaponSO CurrentMainWeapon { get => CurrentEquipment.MainEquipment; }
         public Transform MainCameraTransform { get; private set; }
 
         private void Awake()
@@ -61,6 +55,7 @@ namespace HeroicQuest.StateMachine.Player
             InteractionDetector = GetComponent<InteractionDetector>();
             Targeter = GetComponent<TargetingSystem>();
             Health = GetComponent<Health>();
+            CurrentEquipment = GetComponent<Equipment>();
         }
 
         private void Start()
@@ -72,11 +67,16 @@ namespace HeroicQuest.StateMachine.Player
             SwitchState(new PlayerLocomotionState(this));
         }
 
+        public void FindWeaponLogic()
+        {
+            WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
+        }
+
         private void SpawnWeapon()
         {
-            if (CurrentWeapon)
+            if (CurrentMainWeapon)
             {
-                CurrentWeapon.Equip(RightHandHolder, Animator);
+                CurrentMainWeapon.Equip(RightHandHolder, Animator);
 
                 if (RightHandHolder)
                 {

@@ -26,7 +26,7 @@ namespace HeroicQuest.StateMachine.Player
 
         protected void OnBlock()
         {
-            if (stateMachine.CurrentWeapon.IsUnarmed()) return;
+            if (stateMachine.CurrentMainWeapon.IsUnarmed()) return;
 
             stateMachine.SwitchState(new PlayerBlockState(stateMachine));
         }

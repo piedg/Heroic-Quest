@@ -6,7 +6,8 @@ namespace HeroicQuest.Data
     public enum eWeaponType
     {
         Unarmed,
-        OneHandSword,
+        OneHand,
+        TwoHands,
         Shield,
         Axe
     }
@@ -45,9 +46,12 @@ namespace HeroicQuest.Data
             }
         }
 
+        /// <summary>
+        /// Check if there is a weapon already instantiated, then destroy it
+        /// </summary>
+        /// <param name="transform of the hand"></param>
         public void DestroyAlreadyEquippedWeapon(Transform handHolder)
         {
-            // check if there is a weapon already instantiated, then destroy it
             foreach (Transform children in handHolder)
             {
                 if (children.TryGetComponent(out WeaponLogic weaponLogic))
@@ -63,6 +67,16 @@ namespace HeroicQuest.Data
         public bool IsUnarmed()
         {
             return WeaponType == eWeaponType.Unarmed;
+        }
+
+        public bool IsOneHandWeapon()
+        {
+            return WeaponType == eWeaponType.OneHand;
+        }
+
+        public bool IsTwoHandsWeapon()
+        {
+            return WeaponType == eWeaponType.TwoHands;
         }
     }
 }
