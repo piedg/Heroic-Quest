@@ -1,12 +1,13 @@
 using UnityEngine;
 using HeroicQuest.Managers;
 using HeroicQuest.CustomPhysics;
-using HeroicQuest.Data;
 using HeroicQuest.Gameplay.Interaction;
 using HeroicQuest.Gameplay.Combat.Targeting;
 using HeroicQuest.Gameplay.Combat.Attack;
 using HeroicQuest.Gameplay.Stats;
 using HeroicQuest.Inventory;
+using HeroicQuest.Data;
+using static UnityEditor.Progress;
 
 namespace HeroicQuest.StateMachine.Player
 {
@@ -38,12 +39,11 @@ namespace HeroicQuest.StateMachine.Player
         [field: SerializeField] public float RollAnimSpeed { get; private set; }
 
         [field: Header("Weapon Settings")]
-        [field: SerializeField] public Equipment CurrentEquipment { get; private set; }
+        [field: SerializeField] public Equipment Equipment { get; private set; }
         [field: SerializeField] public WeaponLogic WeaponLogic { get; private set; }
         [field: SerializeField] public Transform RightHandHolder { get; private set; }
         [field: SerializeField] public Transform LeftHandHolder { get; private set; }
-
-        public WeaponSO CurrentMainWeapon { get => CurrentEquipment.MainEquipment; }
+        // public WeaponSO CurrentWeapon { get; private set; }
         public Transform MainCameraTransform { get; private set; }
 
         private void Awake()
@@ -55,7 +55,7 @@ namespace HeroicQuest.StateMachine.Player
             InteractionDetector = GetComponent<InteractionDetector>();
             Targeter = GetComponent<TargetingSystem>();
             Health = GetComponent<Health>();
-            CurrentEquipment = GetComponent<Equipment>();
+            Equipment = GetComponent<Equipment>();
         }
 
         private void Start()
@@ -63,7 +63,6 @@ namespace HeroicQuest.StateMachine.Player
             MainCameraTransform = Camera.main.transform;
 
             SpawnWeapon();
-
             SwitchState(new PlayerLocomotionState(this));
         }
 
@@ -72,15 +71,20 @@ namespace HeroicQuest.StateMachine.Player
             WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
         }
 
-        private void SpawnWeapon()
-        {
-            if (CurrentMainWeapon)
+        /*    public void SetCurrentWeapon(WeaponSO equippedWeapon)
             {
-                CurrentMainWeapon.Equip(RightHandHolder, Animator);
+                CurrentWeapon = equippedWeapon;
+            }*/
+
+        public void SpawnWeapon()
+        {
+            if (Equipment.CurrentPrimaryEquipped)
+            {
+                Equipment.CurrentPrimaryEquipped.Equip(RightHandHolder, Animator);
 
                 if (RightHandHolder)
                 {
-                    WeaponLogic = RightHandHolder.transform.GetComponentInChildren<WeaponLogic>();
+                    FindWeaponLogic();
                 }
             }
         }
@@ -91,13 +95,24 @@ namespace HeroicQuest.StateMachine.Player
             WeaponLogic.GetComponent<CapsuleCollider>().enabled = true;
         }
 
-        void Hit()
-        {
-        }
+        void Hit() { }
 
         void OnEndAttackAnim()
         {
             WeaponLogic.GetComponent<CapsuleCollider>().enabled = false;
+        }
+
+        void OnEquipAnim()
+        {
+            Equipment.ToggleEquippedWeapon();
+            // Equipment.PrimaryEquipment = newWeapon;
+            SpawnWeapon();
+            FindWeaponLogic();
+        }
+
+        void OnEndEquipAnim()
+        {
+            FindWeaponLogic();
         }
 
         void FootR()

@@ -98,6 +98,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EquipPrimary"",
+                    ""type"": ""Button"",
+                    ""id"": ""6799916a-ab3b-49d6-a6cb-742c9f52ac5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -298,6 +307,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SelectPrevTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f304fa6f-576c-465b-916d-4d8374ab862a"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EquipPrimary"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -342,6 +362,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_SelectTarget = m_Player.FindAction("SelectTarget", throwIfNotFound: true);
         m_Player_SelectNextTarget = m_Player.FindAction("SelectNextTarget", throwIfNotFound: true);
         m_Player_SelectPrevTarget = m_Player.FindAction("SelectPrevTarget", throwIfNotFound: true);
+        m_Player_EquipPrimary = m_Player.FindAction("EquipPrimary", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -411,6 +432,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SelectTarget;
     private readonly InputAction m_Player_SelectNextTarget;
     private readonly InputAction m_Player_SelectPrevTarget;
+    private readonly InputAction m_Player_EquipPrimary;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -423,6 +445,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @SelectTarget => m_Wrapper.m_Player_SelectTarget;
         public InputAction @SelectNextTarget => m_Wrapper.m_Player_SelectNextTarget;
         public InputAction @SelectPrevTarget => m_Wrapper.m_Player_SelectPrevTarget;
+        public InputAction @EquipPrimary => m_Wrapper.m_Player_EquipPrimary;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -456,6 +479,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectPrevTarget.started += instance.OnSelectPrevTarget;
             @SelectPrevTarget.performed += instance.OnSelectPrevTarget;
             @SelectPrevTarget.canceled += instance.OnSelectPrevTarget;
+            @EquipPrimary.started += instance.OnEquipPrimary;
+            @EquipPrimary.performed += instance.OnEquipPrimary;
+            @EquipPrimary.canceled += instance.OnEquipPrimary;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -484,6 +510,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SelectPrevTarget.started -= instance.OnSelectPrevTarget;
             @SelectPrevTarget.performed -= instance.OnSelectPrevTarget;
             @SelectPrevTarget.canceled -= instance.OnSelectPrevTarget;
+            @EquipPrimary.started -= instance.OnEquipPrimary;
+            @EquipPrimary.performed -= instance.OnEquipPrimary;
+            @EquipPrimary.canceled -= instance.OnEquipPrimary;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -529,5 +558,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSelectTarget(InputAction.CallbackContext context);
         void OnSelectNextTarget(InputAction.CallbackContext context);
         void OnSelectPrevTarget(InputAction.CallbackContext context);
+        void OnEquipPrimary(InputAction.CallbackContext context);
     }
 }

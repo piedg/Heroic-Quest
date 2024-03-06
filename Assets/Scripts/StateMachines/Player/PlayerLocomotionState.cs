@@ -23,6 +23,8 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.BlockEvent += OnBlock;
             stateMachine.InputManager.TargetEvent += OnTarget;
             stateMachine.InputManager.InteractEvent += OnInteract;
+            stateMachine.InputManager.EquipPrimary += OnEquipPrimary;
+
             stateMachine.Health.OnTakeDamage += OnTakeDamage;
         }
 
@@ -37,7 +39,6 @@ namespace HeroicQuest.StateMachine.Player
             if (stateMachine.InputManager.MovementValue == Vector2.zero)
             {
                 stateMachine.Animator.SetFloat(speedParamHash, 0f, animatorDampTime, deltaTime);
-                return;
             }
 
             stateMachine.Animator.SetFloat(speedParamHash, stateMachine.Controller.velocity.magnitude, animatorDampTime, deltaTime);
@@ -50,6 +51,8 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InputManager.BlockEvent -= OnBlock;
             stateMachine.InputManager.TargetEvent -= OnTarget;
             stateMachine.InputManager.InteractEvent -= OnInteract;
+            stateMachine.InputManager.EquipPrimary -= OnEquipPrimary;
+
             stateMachine.Health.OnTakeDamage -= OnTakeDamage;
         }
 
@@ -63,7 +66,6 @@ namespace HeroicQuest.StateMachine.Player
             if (stateMachine.InputManager.IsAttacking)
             {
                 stateMachine.SwitchState(new PlayerMeleeAttackState(stateMachine, 0, movement));
-                return;
             }
         }
 

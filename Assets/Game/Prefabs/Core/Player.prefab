@@ -1295,15 +1295,15 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 0}
   <ForceReceiver>k__BackingField: {fileID: 0}
   <InteractionDetector>k__BackingField: {fileID: 0}
-  <Targeter>k__BackingField: {fileID: 598298792710621425}
+  <Targeter>k__BackingField: {fileID: 0}
   <Health>k__BackingField: {fileID: 0}
-  <MovementSpeed>k__BackingField: 4.197
+  <MovementSpeed>k__BackingField: 5.2
   <TargetingMovementSpeed>k__BackingField: 2
   <RotationSpeed>k__BackingField: 10
   <RollForce>k__BackingField: 5
   <RollDuration>k__BackingField: 1.05
   <RollAnimSpeed>k__BackingField: 0.9
-  <CurrentEquipment>k__BackingField: {fileID: 0}
+  <Equipment>k__BackingField: {fileID: 0}
   <WeaponLogic>k__BackingField: {fileID: 0}
   <RightHandHolder>k__BackingField: {fileID: 3066094760843531868}
   <LeftHandHolder>k__BackingField: {fileID: 0}
@@ -1347,9 +1347,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54665cd690f59bb48af44741d4943608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainEquipment: {fileID: 0}
+  primaryEquipment: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3, type: 2}
+  currentPrimaryEquipped: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
+    type: 2}
   secondaryEquipment: {fileID: 0}
   items: []
+  unarmed: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3, type: 2}
 --- !u!1 &3392956121609593443
 GameObject:
   m_ObjectHideFlags: 0

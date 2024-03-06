@@ -15275,6 +15275,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 159775921793455252, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 217651376459264394, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -15582,7 +15587,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4816927152871221433, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
-      propertyPath: mainEquipment
+      propertyPath: unarmed
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
+        type: 2}
+    - target: {fileID: 4816927152871221433, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
+      propertyPath: primaryEquipment
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
+        type: 2}
+    - target: {fileID: 4816927152871221433, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
+        type: 3}
+      propertyPath: currentPrimaryEquipped
       value: 
       objectReference: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
         type: 2}
@@ -15657,16 +15674,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6fef2decfdd117843be8c0bc611a49f3,
         type: 2}
-    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: <MovementSpeed>k__BackingField
-      value: 5.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5283607542430105931, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
-        type: 3}
-      propertyPath: <TargetingMovementSpeed>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5872803812272998575, guid: 7f003dda8cec6f5448a25a5b5b09ab26,
         type: 3}
       propertyPath: m_LocalRotation.w

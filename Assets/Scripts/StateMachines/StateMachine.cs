@@ -14,8 +14,11 @@ namespace HeroicQuest.StateMachine
 
         public void SwitchState(State newState)
         {
-            //Debug.Log(gameObject.name + " Current State: " + currentState?.ToString());
-            //Debug.Log(gameObject.name + " New State: " + newState.ToString());
+            if (gameObject.CompareTag("Player"))
+            {
+                Debug.Log(gameObject.name + " Current State: " + currentState?.ToString());
+                Debug.Log(gameObject.name + " New State: " + newState.ToString());
+            }
             currentState?.Exit();
             currentState = newState;
             currentState?.Enter();

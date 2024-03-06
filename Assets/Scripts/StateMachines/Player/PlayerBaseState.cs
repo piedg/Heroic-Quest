@@ -14,19 +14,16 @@ namespace HeroicQuest.StateMachine.Player
             if (stateMachine.Targeter.CurrentTarget != null)
             {
                 stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-                return;
             }
             else
             {
                 stateMachine.SwitchState(new PlayerLocomotionState(stateMachine));
-                return;
             }
         }
 
-
         protected void OnBlock()
         {
-            if (stateMachine.CurrentMainWeapon.IsUnarmed()) return;
+            if (stateMachine.Equipment.CurrentPrimaryEquipped.IsUnarmed()) { return; };
 
             stateMachine.SwitchState(new PlayerBlockState(stateMachine));
         }
@@ -41,6 +38,12 @@ namespace HeroicQuest.StateMachine.Player
         protected void OnTakeDamage()
         {
             stateMachine.SwitchState(new PlayerHitState(stateMachine));
+        }
+
+        protected void OnEquipPrimary()
+        {
+            //stateMachine.Equipment.ToggleEquippedWeapon();
+            stateMachine.SwitchState(new PlayerEquipState(stateMachine));
         }
     }
 }

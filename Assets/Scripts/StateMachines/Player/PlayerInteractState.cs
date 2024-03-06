@@ -19,14 +19,15 @@ namespace HeroicQuest.StateMachine.Player
             stateMachine.InteractionDetector.CurrentTarget.Interact();
 
             PickuppableItem item = stateMachine.InteractionDetector.CurrentTarget as PickuppableItem;
-            WeaponSO newWeapon = item.GetWeapon();
-            stateMachine.CurrentEquipment.MainEquipment = newWeapon;
 
             // TODO 
-            // dopo interazione aggiungere oggetti all'inventario
-            //stateMachine.SetCurrentWeapon(newWeapon);
-            newWeapon.Equip(stateMachine.RightHandHolder, stateMachine.Animator);
-            stateMachine.FindWeaponLogic();
+            // dopo interazione aggiungere oggetto all'inventario
+            // stateMachine.SetCurrentWeapon(newWeapon);
+
+            WeaponSO newWeapon = item.GetWeapon();
+            stateMachine.Equipment.PrimaryEquipment = newWeapon;
+            stateMachine.Equipment.CurrentPrimaryEquipped = newWeapon;
+            stateMachine.SpawnWeapon();
         }
 
         public override void Update(float deltaTime)

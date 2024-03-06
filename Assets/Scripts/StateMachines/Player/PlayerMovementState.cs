@@ -31,10 +31,13 @@ public abstract class PlayerMovementState : PlayerBaseState
 
     protected void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
-        stateMachine.transform.rotation = Quaternion.Lerp(
-            stateMachine.transform.rotation,
-            Quaternion.LookRotation(movement),
-            deltaTime * stateMachine.RotationSpeed);
+        if (movement.magnitude > Mathf.Epsilon)
+        {
+            stateMachine.transform.rotation = Quaternion.Lerp(
+                stateMachine.transform.rotation,
+                Quaternion.LookRotation(movement),
+                deltaTime * stateMachine.RotationSpeed);
+        }
     }
 
     protected void FaceOnTarget(float deltaTime)

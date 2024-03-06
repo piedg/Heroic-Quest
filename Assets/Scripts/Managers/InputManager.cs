@@ -13,6 +13,7 @@ namespace HeroicQuest.Managers
         public event Action RollEvent;
         public event Action BlockEvent;
         public event Action InteractEvent;
+        public event Action EquipPrimary;
 
         public event Action TargetEvent;
         public event Action NextTargetEvent;
@@ -103,6 +104,13 @@ namespace HeroicQuest.Managers
         {
             if (!context.performed) { return; }
             NextTargetEvent?.Invoke();
+        }
+
+        public void OnEquipPrimary(InputAction.CallbackContext context)
+        {
+            if (!context.performed) { return; }
+
+            EquipPrimary?.Invoke();
         }
     }
 }
